@@ -1,0 +1,338 @@
+.form {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.fieldset {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  margin: 0;
+  min-width: 0;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--text-bright);
+  letter-spacing: -0.02em;
+}
+
+.stepBadge {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: var(--cyan-400);
+  font-size: 0.9rem;
+}
+
+.hint {
+  margin-top: 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  max-width: 68ch;
+}
+
+.field {
+  margin-top: 1.25rem;
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.optional {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: rgba(4, 7, 15, 0.55);
+  color: var(--text-bright);
+  font-size: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.input::placeholder {
+  color: var(--text-dim);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--cyan-500);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.16);
+  background: rgba(4, 7, 15, 0.75);
+}
+
+.input[aria-invalid='true'] {
+  border-color: #f87171;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 18rem;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.selectWrap::after {
+  content: '';
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.selectWrap select {
+  appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.selectWrap option {
+  background: var(--navy-850);
+  color: var(--text);
+}
+
+/* --------------------------------------------------------- build picker --- */
+
+.optionGrid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+}
+
+.optionGrid:focus {
+  outline: none;
+}
+
+.option {
+  position: relative;
+  display: block;
+  padding: 1.1rem 1.15rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  background: rgba(4, 7, 15, 0.4);
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition), transform var(--transition);
+}
+
+.option:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  transform: translateY(-2px);
+}
+
+.optionActive {
+  border-color: var(--cyan-500);
+  background: rgba(34, 211, 238, 0.1);
+  box-shadow: 0 0 0 1px var(--cyan-500) inset;
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio:focus-visible + .optionLabel {
+  outline: 2px solid var(--cyan-500);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.optionLabel {
+  display: block;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 0.2rem;
+}
+
+.optionDesc {
+  display: block;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------- description meter */
+
+.meter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.7rem;
+  font-size: var(--step--1);
+}
+
+.meterTrack {
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.meterFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan-600), var(--cyan-400));
+  transition: width 220ms ease;
+}
+
+.meterFillDone {
+  background: linear-gradient(90deg, var(--amber-500), var(--amber-300));
+}
+
+.meterText {
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.meterDone {
+  color: var(--amber-400);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------- layout --- */
+
+.twoUp {
+  display: grid;
+  gap: 1rem 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.submitRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.submitNote {
+  font-size: var(--step--1);
+  color: var(--text-dim);
+  max-width: 30ch;
+}
+
+.error {
+  margin-top: 0.5rem;
+  color: #fca5a5;
+  font-size: var(--step--1);
+}
+
+.formError {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  background: rgba(248, 113, 113, 0.1);
+  color: #fca5a5;
+}
+
+/* -------------------------------------------------------------- success --- */
+
+.success {
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(34, 211, 238, 0.32);
+  background:
+    radial-gradient(600px 300px at 50% -20%, rgba(34, 211, 238, 0.18), transparent 65%),
+    rgba(10, 16, 36, 0.7);
+  text-align: center;
+}
+
+.tick {
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.14);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  color: var(--cyan-400);
+}
+
+.tick svg {
+  width: 26px;
+  height: 26px;
+}
+
+.success h2 {
+  font-size: var(--step-2);
+}
+
+.success p {
+  margin: 0.85rem auto 0;
+  max-width: 52ch;
+  color: var(--text-muted);
+}
+
+.recap {
+  display: grid;
+  gap: 1px;
+  margin: 2.25rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--line);
+  overflow: hidden;
+  text-align: left;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+}
+
+.recap > div {
+  padding: 1rem 1.15rem;
+  background: rgba(4, 7, 15, 0.6);
+}
+
+.recap dt {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.recap dd {
+  margin: 0.3rem 0 0;
+  color: var(--text-bright);
+  font-weight: 500;
+}

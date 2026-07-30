@@ -1,0 +1,41 @@
+.hero {
+  position: relative;
+  padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 5vw, 4rem);
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: -45%;
+  left: 50%;
+  translate: -50% 0;
+  width: min(1100px, 130vw);
+  aspect-ratio: 2 / 1;
+  background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.16), transparent 62%);
+  pointer-events: none;
+}
+
+.amber .glow {
+  background: radial-gradient(ellipse at center, rgba(245, 185, 66, 0.15), transparent 62%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong) 45%, transparent);
+}
+
+.title {
+  max-width: 18ch;
+}
+
+.intro {
+  margin-top: 1.15rem;
+}
+
+.actions {
+  margin-top: 2rem;
+}

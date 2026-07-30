@@ -1,0 +1,94 @@
+.storyGrid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+}
+
+.story p {
+  margin-top: 1.1rem;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+.motto {
+  margin-top: 1.75rem !important;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--amber-400);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--step-1);
+  color: var(--text-bright) !important;
+  letter-spacing: -0.02em;
+}
+
+.factCard {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(500px 260px at 100% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
+    rgba(10, 16, 36, 0.75);
+}
+
+.factCard h3 {
+  font-size: var(--step-1);
+  margin-bottom: 1.25rem;
+}
+
+.factCard dl {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.factCard dt {
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.factCard dd {
+  margin: 0.25rem 0 0;
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------- founders --- */
+
+.founder {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.founder p {
+  color: var(--text-muted);
+}
+
+/* Placeholder avatar — replace with a photo when one is supplied. */
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: linear-gradient(140deg, rgba(34, 211, 238, 0.16), rgba(245, 185, 66, 0.12));
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--text-bright);
+  letter-spacing: 0.02em;
+}
+
+.role {
+  margin: 0.15rem 0 0.7rem;
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan-400) !important;
+}
+
+@media (min-width: 960px) {
+  .storyGrid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  }
+}

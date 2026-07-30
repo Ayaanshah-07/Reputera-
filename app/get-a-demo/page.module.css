@@ -1,0 +1,126 @@
+.promises {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--line);
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+.promises li {
+  padding: 1.25rem 1.4rem;
+  background: rgba(10, 16, 36, 0.7);
+}
+
+.promises strong {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--step-1);
+  color: var(--cyan-400);
+  letter-spacing: -0.02em;
+}
+
+.promises span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+.layout {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+}
+
+.formCol {
+  min-width: 0;
+}
+
+.formTitle {
+  font-size: var(--step-2);
+}
+
+.formSub {
+  margin: 0.6rem 0 clamp(1.75rem, 4vw, 2.5rem);
+  max-width: 54ch;
+}
+
+.sidebar {
+  min-width: 0;
+}
+
+.sticky {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(500px 250px at 100% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
+    rgba(10, 16, 36, 0.75);
+}
+
+.sidebarTitle {
+  font-size: var(--step-1);
+  margin-bottom: 1.25rem;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.4rem;
+  display: grid;
+  gap: 1.35rem;
+  border-left: 1px solid var(--line-strong);
+}
+
+.timeline li {
+  position: relative;
+}
+
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: calc(-1.4rem - 5px);
+  top: 0.45rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cyan-500);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15);
+}
+
+.timeline strong {
+  display: block;
+  color: var(--text-bright);
+  font-size: 0.97rem;
+}
+
+.timeline span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+.sidebarNote {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: var(--step--1);
+  color: var(--text-dim);
+}
+
+@media (min-width: 1000px) {
+  .layout {
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  }
+
+  .sticky {
+    position: sticky;
+    top: 6rem;
+  }
+}

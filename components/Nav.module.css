@@ -1,0 +1,278 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transition), border-color var(--transition),
+    backdrop-filter var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background: rgba(7, 11, 24, 0.78);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom-color: var(--line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-height: 4.5rem;
+}
+
+/* ------------------------------------------------------------ desktop --- */
+
+.desktopNav {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.navLink:hover {
+  color: var(--text-bright);
+  background: var(--surface);
+}
+
+.active {
+  color: var(--text-bright);
+}
+
+.chevron {
+  width: 12px;
+  height: 12px;
+  transition: transform var(--transition);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.hasChildren {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 50%;
+  translate: -50% 0;
+  width: 19rem;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  background: rgba(10, 16, 36, 0.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+}
+
+.dropdownOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdownLead {
+  display: block;
+  padding: 0.65rem 0.8rem;
+  margin-bottom: 0.35rem;
+  border-radius: var(--radius-sm);
+  border-bottom: 1px solid var(--line);
+  color: var(--text-bright);
+  font-weight: 600;
+}
+
+.dropdownLead span {
+  display: block;
+  font-size: var(--step--1);
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.dropdownLead:hover {
+  background: var(--surface);
+  color: var(--cyan-400);
+}
+
+.dropdownLink {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: background-color var(--transition), color var(--transition), padding-left var(--transition);
+}
+
+.dropdownLink:hover {
+  background: var(--surface);
+  color: var(--text-bright);
+  padding-left: 1.05rem;
+}
+
+/* ------------------------------------------------------------ actions --- */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Hidden only on the narrowest phones, where the logo and burger need the
+   room; the mobile sheet still carries a full-width CTA. */
+.cta {
+  display: none;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 480px) {
+  .cta {
+    display: inline-flex;
+  }
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.burger,
+.burger::before,
+.burger::after {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-bright);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.burger::before {
+  transform: translateY(-6px);
+}
+
+.burger::after {
+  transform: translateY(4px);
+}
+
+.burgerOpen {
+  background: transparent;
+}
+
+.burgerOpen::before {
+  transform: translateY(1px) rotate(45deg);
+}
+
+.burgerOpen::after {
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+/* ------------------------------------------------------------- mobile --- */
+
+.mobileMenu {
+  position: fixed;
+  inset: 4.5rem 0 0;
+  z-index: 99;
+  padding-block: var(--space-lg) var(--space-xl);
+  background: rgba(7, 11, 24, 0.98);
+  backdrop-filter: blur(20px);
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.mobileOpen {
+  opacity: 1;
+}
+
+.mobileList {
+  list-style: none;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+}
+
+.mobileLink {
+  display: block;
+  padding: 0.9rem 0;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  border-bottom: 1px solid var(--line);
+}
+
+.mobileSublist {
+  list-style: none;
+  margin: 0.5rem 0 1rem;
+  padding: 0 0 0 0.9rem;
+  border-left: 1px solid var(--line-strong);
+}
+
+.mobileSublink {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--text-muted);
+}
+
+.mobileNote {
+  margin-top: 0.9rem;
+  text-align: center;
+  font-size: var(--step--1);
+  color: var(--text-dim);
+}
+
+@media (min-width: 900px) {
+  .desktopNav {
+    display: block;
+  }
+
+  .cta {
+    display: inline-flex;
+    padding: 0.65rem 1.35rem;
+    font-size: 0.95rem;
+  }
+
+  .toggle,
+  .mobileMenu {
+    display: none;
+  }
+}
