@@ -15,18 +15,8 @@ export const metadata = pageMetadata({
 });
 
 const founders = [
-  {
-    name: 'Ayaan Shah',
-    role: 'Co-founder',
-    initials: 'AS',
-    bio: 'Works closest to the product side — translating how a business actually runs into software that matches it, and holding the line on quality when it would be easier to ship something generic.',
-  },
-  {
-    name: 'Shahid Khan',
-    role: 'Co-founder',
-    initials: 'SK',
-    bio: 'Focused on delivery and client relationships — making sure what gets promised gets built, on a timeline that respects the fact you have a business to run in the meantime.',
-  },
+  { name: 'Ayaan Shah', role: 'Co-founder', initials: 'AS' },
+  { name: 'Shahid Khan', role: 'Co-founder', initials: 'SK' },
 ];
 
 const values = [
@@ -141,8 +131,9 @@ export default function AboutPage() {
             <p className="eyebrow">The founders</p>
             <h2 id="founders-title">Two people who answer for the work.</h2>
             <p>
-              Reputera is small on purpose. When you work with us, you talk to the people responsible for
-              what gets built — not an account manager relaying messages.
+              Reputera is built by Ayaan Shah and Shahid Khan, who started the company to build software the
+              way it should be built: shaped around how a business actually runs, and delivered by the people
+              who actually build it — hands-on with every project, start to finish.
             </p>
           </div>
 
@@ -156,7 +147,6 @@ export default function AboutPage() {
                 <div>
                   <h3>{founder.name}</h3>
                   <p className={styles.role}>{founder.role}</p>
-                  <p>{founder.bio}</p>
                 </div>
               </article>
             ))}

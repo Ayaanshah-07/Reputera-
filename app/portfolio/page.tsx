@@ -3,13 +3,13 @@ import CtaBand from '@/components/CtaBand';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
-import { industries } from '@/lib/industries';
+import { caseStudies } from '@/lib/industries';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
-  title: 'Work & Case Studies by Industry | Reputera',
+  title: 'Portfolio | Custom Software, App & AI Projects | Reputera',
   description:
-    'Software, app and website projects Reputera has delivered, shown by industry: healthcare, real estate, logistics, professional services, retail, construction, hospitality and fitness.',
+    'A sample of what Reputera has built — ERP systems, AI-powered features and field-ready apps, shown by industry rather than by client name.',
   path: '/portfolio',
 });
 
@@ -19,7 +19,7 @@ export default function PortfolioPage() {
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Home', path: '/' },
-          { name: 'Work', path: '/portfolio' },
+          { name: 'Portfolio', path: '/portfolio' },
         ])}
       />
 
@@ -27,11 +27,11 @@ export default function PortfolioPage() {
         eyebrow="Selected work"
         title={
           <>
-            The problem, the build, the <span className="text-gradient">outcome</span>.
+            Real work, <span className="text-gradient">real businesses</span>.
           </>
         }
-        intro="We show our work by industry rather than by client name. Most of what we build runs inside businesses that would rather not publicise their internal systems — so the story is here, and the logo is not."
-        actions={[{ label: 'Get a Demo', href: '/get-a-demo' }]}
+        intro="A sample of what we've built — shown by industry, not by name. Much of this runs inside businesses that would rather not publicise their internal systems, so the story is here and the logo is not."
+        actions={[{ label: 'Start Your Demo', href: '/get-a-demo' }]}
       />
 
       <section className="section" aria-labelledby="work-title">
@@ -41,39 +41,29 @@ export default function PortfolioPage() {
           </h2>
 
           <div className={styles.list}>
-            {industries.map((industry, index) => (
+            {caseStudies.map((study, index) => (
               <article
-                key={industry.slug}
-                id={industry.slug}
+                key={study.slug}
+                id={study.slug}
                 className={`reveal ${styles.item}`}
-                data-reveal-index={index % 3}
-                aria-labelledby={`${industry.slug}-title`}
+                data-reveal-index={index}
+                aria-labelledby={`${study.slug}-title`}
               >
                 <div className={styles.itemHead}>
-                  <h3 id={`${industry.slug}-title`}>{industry.name}</h3>
-                  <span className="pill">{industry.discipline}</span>
+                  <p className={styles.niche}>{study.niche}</p>
+                  <ul className="pill-list">
+                    {study.tags.map((tag) => (
+                      <li key={tag}>
+                        <span className="pill">{tag}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <p className={styles.headline}>{industry.headline}</p>
-
-                <div className={styles.body}>
-                  <div>
-                    <h4 className={styles.label}>The challenge</h4>
-                    <p>{industry.challenge}</p>
-                  </div>
-                  <div>
-                    <h4 className={styles.label}>What we built</h4>
-                    <p>{industry.build}</p>
-                  </div>
-                  <div>
-                    <h4 className={styles.label}>The outcome</h4>
-                    <ul className={styles.outcomes}>
-                      {industry.outcomes.map((outcome) => (
-                        <li key={outcome}>{outcome}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                <h3 id={`${study.slug}-title`} className={styles.title}>
+                  {study.title}
+                </h3>
+                <p className={styles.copy}>{study.copy}</p>
               </article>
             ))}
           </div>

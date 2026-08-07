@@ -10,7 +10,7 @@ export const site = {
   tagline: 'Where ideas earn their reputation.',
   supportingTagline: 'From the software we build to the reputation you keep.',
   description:
-    'Reputera builds custom software, apps and websites shaped around your exact business model and workflow logic — never templated. Get a visual demo in 24–72 hours.',
+    'Reputera builds custom software, apps, websites, and AI solutions engineered around how your business actually runs. Get a working demo in 24–72 hours.',
   // Override in production with NEXT_PUBLIC_SITE_URL (Vercel/Netlify env var).
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://reputera.com').replace(/\/$/, ''),
   email: 'hello@reputera.com',
@@ -33,7 +33,9 @@ export type Service = {
   heading: string;
   metaTitle: string;
   metaDescription: string;
-  /** One-line summary used on cards and in schema. */
+  /** Small label shown on the service card. */
+  tag: string;
+  /** Card copy, also used in schema. Leads with the target keyword. */
   summary: string;
   /** Lead paragraph on the service page. */
   intro: string;
@@ -55,8 +57,9 @@ export const services: Service[] = [
     metaTitle: 'Custom Software Development | Reputera',
     metaDescription:
       'Custom software built around your exact business model and workflow logic — internal tools, platforms, dashboards, automations and AI features. Get a visual demo in 24–72 hours.',
+    tag: 'Lead offering',
     summary:
-      'Systems built around your workflow logic — internal tools, platforms, portals and automations that fit how your business actually runs.',
+      'Custom software mapped to how your business actually runs — ERP systems, internal tools, and workflow automation, including AI-powered features. We build the system around your logic, so it fits like it was always yours.',
     intro:
       'Most software asks your business to change shape to fit it. We do the opposite. We map how your operation actually runs — the approvals, the exceptions, the spreadsheet everybody secretly relies on — and build software around that logic. No templates, no forcing your process into someone else\'s product.',
     accent: 'cyan',
@@ -132,8 +135,9 @@ export const services: Service[] = [
     metaTitle: 'Mobile & Web App Development | Reputera',
     metaDescription:
       'iOS, Android and web apps designed around your users and your business logic. Native-feeling, fast, and built to ship. Get a visual demo in 24–72 hours.',
+    tag: 'Mobile & web',
     summary:
-      'iOS, Android and web apps that feel native, load fast and are built around what your users actually do.',
+      "Custom apps that put your workflow in your team's or customers' pocket — built for how they'll actually use it, not a generic shell forced to fit.",
     intro:
       'An app earns its place on someone\'s home screen or it gets deleted. We design for the two or three things your users genuinely need to do, make those effortless, and build the rest of the business logic in behind them.',
     accent: 'amber',
@@ -208,8 +212,9 @@ export const services: Service[] = [
     metaTitle: 'Website Design & Development | Reputera',
     metaDescription:
       'Fast, SEO-ready websites built to convert — custom design, semantic markup, Core Web Vitals in the green. Get a visual demo in 24–72 hours.',
+    tag: 'Web',
     summary:
-      'Fast, search-ready sites built to convert — custom design, clean markup and performance that holds up on a phone.',
+      'Fast, sharp, search-friendly websites built to convert — the front door to everything else Reputera builds for you.',
     intro:
       'Your website is usually the first thing anyone checks before deciding whether to trust you. We build sites that load fast, read clearly, rank well and turn visitors into enquiries — designed for your business rather than dropped onto a theme.',
     accent: 'cyan',
@@ -284,8 +289,9 @@ export const services: Service[] = [
     metaTitle: 'AI Solutions: Assistants, Agents & Chatbots | Reputera',
     metaDescription:
       'AI assistants, autonomous agents and chatbots trained on your business — grounded in your data, wired into your systems. Get a visual demo in 24–72 hours.',
+    tag: 'AI Solutions',
     summary:
-      'AI assistants, agents and chatbots grounded in your own data and wired into the systems you already use.',
+      'AI assistants, agents, and chatbots built into how your business already operates — automating real work, not bolted on as a gimmick.',
     intro:
       'AI is only useful when it knows your business. We build assistants, agents and chatbots grounded in your documents, your data and your rules — connected to the systems where the work actually happens, with limits on what they are allowed to do.',
     accent: 'amber',

@@ -11,7 +11,7 @@ export default function ServiceCard({ service, index = 0 }: { service: Service; 
       }`}
       data-reveal-index={index}
     >
-      {service.flagship && <span className={styles.flag}>Flagship</span>}
+      <span className={`${styles.flag} ${service.flagship ? styles.flagLead : ''}`}>{service.tag}</span>
       <span className={styles.icon}>
         <ServiceIcon icon={service.icon} />
       </span>

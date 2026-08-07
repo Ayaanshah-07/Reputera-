@@ -41,33 +41,24 @@ export default function Footer() {
                   <Link href="/about">About</Link>
                 </li>
                 <li>
-                  <Link href="/portfolio">Work</Link>
+                  <Link href="/portfolio">Portfolio</Link>
                 </li>
-                <li>
-                  <Link href="/contact">Contact</Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className={styles.colTitle}>Product</h2>
-              <ul>
                 <li>
                   <Link href="/reviews">
-                    Reputera Reviews <span className={styles.soon}>Soon</span>
+                    Product <span className={styles.soon}>Soon</span>
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h2 className={styles.colTitle}>Get in touch</h2>
+              <h2 className={styles.colTitle}>Get started</h2>
               <ul>
                 <li>
-                  <a href={`mailto:${site.email}`}>{site.email}</a>
+                  <Link href="/get-a-demo">Get a Demo</Link>
                 </li>
                 <li>
-                  <a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a>
+                  <a href={`mailto:${site.email}`}>Email us</a>
                 </li>
               </ul>
             </div>
@@ -76,7 +67,8 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p>
-            © {year} {site.name}. All rights reserved.
+            © {year} {site.name}. All rights reserved. <span aria-hidden="true">·</span> Built around your
+            business.
           </p>
           <p className={styles.motto}>Where ideas earn their reputation.</p>
         </div>

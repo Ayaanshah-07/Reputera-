@@ -1,13 +1,11 @@
 import Link from 'next/link';
 import AnimatedBackground from './AnimatedBackground';
-import { site } from '@/lib/site';
 import styles from './Hero.module.css';
 
-const proofPoints = [
-  { value: '24–72h', label: 'From brief to visual demo' },
-  { value: '0', label: 'Templates used' },
-  { value: '4', label: 'Disciplines under one roof' },
-  { value: '100%', label: 'Code ownership, yours' },
+const stats = [
+  { value: '24–72hrs', label: 'demo turnaround' },
+  { value: '4', label: 'build types, one team' },
+  { value: '0', label: 'templates used' },
 ];
 
 export default function Hero() {
@@ -25,34 +23,42 @@ export default function Hero() {
           Where ideas earn their <span className="text-gradient">reputation</span>.
         </h1>
 
-        <p className={styles.sub}>{site.supportingTagline}</p>
-
         <p className={`lead ${styles.lead}`}>
-          We build custom software, apps and websites shaped around your exact business model and
-          workflow logic — never templated, never forced into someone else&apos;s product.
+          From the software we build to the reputation you keep — we engineer custom software, apps, and
+          AI around how your business actually runs, not the other way around.
         </p>
 
         <div className={`btn-row ${styles.actions}`}>
           <Link href="/get-a-demo" className="btn btn-primary btn-lg">
-            Get a Demo
+            Start Your Demo <span aria-hidden="true">→</span>
           </Link>
-          <Link href="/services/software-development" className="btn btn-ghost btn-lg">
-            Explore what we build
+          <Link href="#services" className="btn btn-ghost btn-lg">
+            See what we build
           </Link>
         </div>
 
-        <p className={styles.note}>
-          Tell us the idea — we send back a visual demo in <strong>24–72 hours</strong>. Free, no obligation.
-        </p>
-
         <dl className={styles.proof}>
-          {proofPoints.map((point) => (
-            <div key={point.label} className={styles.proofItem}>
-              <dt className={styles.proofValue}>{point.value}</dt>
-              <dd className={styles.proofLabel}>{point.label}</dd>
+          {stats.map((stat) => (
+            <div key={stat.label} className={styles.proofItem}>
+              <dt className={styles.proofValue}>{stat.value}</dt>
+              <dd className={styles.proofLabel}>{stat.label}</dd>
             </div>
           ))}
         </dl>
+
+        <aside className={styles.reviewsBanner} aria-label="Reputera Reviews">
+          <span className={styles.reviewsBadge}>Also from Reputera</span>
+          <div className={styles.reviewsBody}>
+            <h2 className={styles.reviewsTitle}>Reputera Reviews</h2>
+            <p>
+              A subscription tool that helps your business manage and grow its Google reviews — reputation,
+              handled.
+            </p>
+          </div>
+          <Link href="/reviews" className={styles.reviewsLink}>
+            Explore <span aria-hidden="true">→</span>
+          </Link>
+        </aside>
       </div>
     </section>
   );

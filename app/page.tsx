@@ -1,99 +1,54 @@
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import ServiceCard from '@/components/ServiceCard';
-import CtaBand from '@/components/CtaBand';
-import Faq from '@/components/Faq';
-import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
-import { faqSchema } from '@/lib/schema';
 import { services } from '@/lib/site';
-import { industries } from '@/lib/industries';
+import { caseStudies } from '@/lib/industries';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
-  title: 'Reputera — Custom Software, App & Website Development',
+  title: 'Reputera | Custom Software, App & AI Development',
   description:
-    'Reputera builds custom software, apps, websites and AI solutions around your exact business model and workflow logic — never templated. Get a free visual demo in 24–72 hours.',
+    'Reputera builds custom software, apps, websites, and AI solutions engineered around how your business actually runs. Get a working demo in 24–72 hours.',
   path: '/',
+  ogTitle: 'Reputera — Where ideas earn their reputation.',
+  ogDescription:
+    'Custom software, apps, and AI built around your exact business logic. See a real demo in 24–72 hours.',
 });
 
 const demoSteps = [
   {
     step: '01',
-    title: 'Tell us what you want built',
-    body: 'Website, app, custom software, AI — or all of it. Pick your niche and describe the idea in as much detail as you like.',
+    title: 'What are you building?',
+    body: 'Website, app, software, AI — or all of it.',
   },
   {
     step: '02',
-    title: 'We design it, not describe it',
-    body: 'Our team turns your description into real screens: the interface, the flow, the feel of the thing you asked for.',
+    title: 'Describe your business.',
+    body: 'Your niche, and what the build actually needs to do — in your own words.',
   },
   {
     step: '03',
-    title: 'You see it in 24–72 hours',
-    body: 'A visual demo lands in your inbox. If it is right, we build it. If it is not, you have lost nothing but a form.',
-  },
-];
-
-const differentiators = [
-  {
-    title: 'Built around your logic',
-    body: 'We map how your business actually runs — the approvals, the exceptions, the workarounds — and encode that. Your software should not ask you to work differently.',
-  },
-  {
-    title: 'Nothing templated',
-    body: 'No themes, no recycled builds with a new logo dropped on top. Every interface and data model starts from your business, not from a starter kit.',
-  },
-  {
-    title: 'Show, then build',
-    body: 'Most agencies send a proposal. We send a demo. You judge the work before you commit to it, which is a far more honest way to start.',
-  },
-  {
-    title: 'One team, four disciplines',
-    body: 'Software, apps, websites and AI under one roof — so the pieces are designed to fit together instead of being stitched between vendors.',
+    title: 'We hand you back a demo.',
+    body: 'A real, working visual of your idea — not a proposal, not a call.',
   },
 ];
 
 export default function HomePage() {
-  const homeFaqs = [
-    {
-      question: 'What does Reputera actually build?',
-      answer:
-        'Custom software, mobile and web apps, websites, and AI assistants, agents and chatbots. Software development is our lead offering — the others usually connect back into it.',
-    },
-    {
-      question: 'What is the free demo?',
-      answer:
-        'You describe what you want built and within 24–72 hours we send back a visual demo — real designed screens of your product. There is no cost and no obligation to continue.',
-    },
-    {
-      question: 'Do you work with businesses in any industry?',
-      answer:
-        'Yes. We have built for healthcare, real estate, logistics, professional services, retail, hospitality and more. The process starts with learning your workflow, so the industry matters less than your willingness to explain how it works.',
-    },
-    {
-      question: 'What is Reputera Reviews?',
-      answer:
-        'A subscription product we are building: a reputation management tool that helps businesses collect, monitor and respond to Google reviews. It is coming soon — you can join the waitlist.',
-    },
-  ];
-
   return (
     <>
-      <JsonLd data={faqSchema(homeFaqs)} />
-
       {/* Hero owns the page's single <h1>. */}
       <Hero />
 
       {/* ------------------------------------------------------------- services */}
-      <section className="section" aria-labelledby="services-title">
+      <section id="services" className="section" aria-labelledby="services-title">
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">What we build</p>
-            <h2 id="services-title">Four disciplines. One team that connects them.</h2>
+            <h2 id="services-title">One team. Four ways to build it.</h2>
             <p>
-              Software development leads everything we do. Apps, websites and AI extend it — built by the
-              same people, on the same foundations.
+              Software is where we go deepest — apps, websites, and AI are how it reaches your customers.
+              Every build starts with your workflow, not a template.
             </p>
           </div>
 
@@ -110,13 +65,11 @@ export default function HomePage() {
         <div className="container">
           <div className={styles.demoInner}>
             <div className={styles.demoCopy}>
-              <p className="eyebrow eyebrow-amber">The signature move</p>
-              <h2 id="demo-title">
-                Get a <span className="text-amber">Demo</span> — your idea, made visible in 24–72 hours.
-              </h2>
+              <p className="eyebrow eyebrow-amber">Get a Demo</p>
+              <h2 id="demo-title">Bring your idea into action.</h2>
               <p className="lead">
-                This is the brand promise in action. Instead of a slide deck about what we could build, you
-                get a visual demo of the actual thing — designed around your business, delivered in days.
+                Answer a few questions about what you need — we come back with a real, visual demo, not a
+                sales call. It&apos;s the fastest way to see we can build exactly what you&apos;re picturing.
               </p>
 
               <ol className={styles.steps}>
@@ -133,92 +86,45 @@ export default function HomePage() {
 
               <div className="btn-row">
                 <Link href="/get-a-demo" className="btn btn-amber btn-lg">
-                  Start your demo request
+                  Start Your Demo <span aria-hidden="true">→</span>
                 </Link>
-                <span className={styles.freeNote}>Free · No obligation</span>
               </div>
             </div>
 
-            <aside className={styles.demoPanel} aria-label="What the demo request asks for">
-              <div className={styles.panelHead}>
-                <span className={styles.dots} aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                <span>Demo request</span>
-              </div>
-              <ul className={styles.panelList}>
-                <li>
-                  <span>What do you want built?</span>
-                  <em>Website · App · Software · AI · All of it</em>
-                </li>
-                <li>
-                  <span>Your business niche</span>
-                  <em>Choose from the list, or type your own</em>
-                </li>
-                <li>
-                  <span>Describe what you want</span>
-                  <em>The more detail, the sharper the demo</em>
-                </li>
-                <li>
-                  <span>Budget range</span>
-                  <em>So we scope something realistic</em>
-                </li>
-                <li>
-                  <span>Name, phone, email</span>
-                  <em>Where we send the demo</em>
-                </li>
-              </ul>
-              <p className={styles.panelFoot}>
-                Reply window: <strong>24–72 hours</strong>
-              </p>
+            <aside className={styles.promiseBox} aria-label="Demo turnaround">
+              <p className={styles.promiseValue}>24–72</p>
+              <p className={styles.promiseLabel}>Hours to your demo.</p>
+              <p className={styles.promiseNote}>No commitment. Just proof we can build it.</p>
             </aside>
           </div>
         </div>
       </section>
 
-      {/* --------------------------------------------------------- differentiators */}
-      <section className="section" aria-labelledby="approach-title">
+      {/* ------------------------------------------------------------ portfolio */}
+      <section className="section" aria-labelledby="work-title">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Why Reputera</p>
-            <h2 id="approach-title">Custom means built for your logic — not your logo on a template.</h2>
+            <p className="eyebrow">Selected work</p>
+            <h2 id="work-title">Real work, real businesses.</h2>
+            <p>A sample of what we&apos;ve built — shown by industry, not by name.</p>
           </div>
 
           <div className="grid grid-2">
-            {differentiators.map((item, index) => (
-              <article key={item.title} className="card card-hover reveal" data-reveal-index={index}>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
+            {caseStudies.map((study, index) => (
+              <article key={study.slug} className={`card card-hover reveal ${styles.case}`} data-reveal-index={index}>
+                <p className={styles.caseNiche}>{study.niche}</p>
+                <h3>{study.title}</h3>
+                <p>{study.copy}</p>
+                <ul className="pill-list">
+                  {study.tags.map((tag) => (
+                    <li key={tag}>
+                      <span className="pill">{tag}</span>
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------ industries */}
-      <section className="section section-divider" aria-labelledby="industries-title">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow">Where we&apos;ve built</p>
-            <h2 id="industries-title">Work shown by industry, not by client name.</h2>
-            <p>
-              Much of what we build runs inside businesses that would rather not advertise their systems. So
-              we show the problem, the build and the outcome — and keep the names out of it.
-            </p>
-          </div>
-
-          <ul className={styles.industryGrid}>
-            {industries.slice(0, 6).map((industry, index) => (
-              <li key={industry.slug} className="reveal" data-reveal-index={index}>
-                <Link href={`/portfolio#${industry.slug}`} className={styles.industryCard}>
-                  <span className={styles.industryName}>{industry.name}</span>
-                  <span className={styles.industryLine}>{industry.headline}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
 
           <div className="btn-row" style={{ marginTop: '2rem' }}>
             <Link href="/portfolio" className="btn btn-ghost">
@@ -228,22 +134,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------------- reviews */}
-      <section className="section" aria-labelledby="reviews-title">
+      {/* -------------------------------------------------------------- product */}
+      <section className="section section-divider" aria-labelledby="product-title">
         <div className="container">
           <div className={styles.reviewsCard}>
             <div>
-              <p className="eyebrow eyebrow-amber">The product side</p>
-              <h2 id="reviews-title">Reputera Reviews</h2>
+              <p className="eyebrow eyebrow-amber">Coming soon</p>
+              <h2 id="product-title">Reputera Reviews</h2>
               <p className="lead">
-                A subscription tool for managing your Google reviews — collect more of them, catch new ones
-                as they land, and reply without living in your inbox. Currently in development.
+                A subscription tool for managing and growing your Google reviews — turning happy customers
+                into a reputation that markets you. Details coming soon.
               </p>
               <div className="btn-row" style={{ marginTop: '1.75rem' }}>
                 <Link href="/reviews" className="btn btn-ghost">
-                  Join the waitlist
+                  Join the waitlist <span aria-hidden="true">→</span>
                 </Link>
-                <span className="badge badge-amber">Coming soon</span>
               </div>
             </div>
             <p className={styles.reviewsMotto}>
@@ -255,11 +160,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Rendered on-page as well as in FAQPage schema — Google requires the
-          answers to be visible to users, not schema-only. */}
-      <Faq items={homeFaqs} />
-
-      <CtaBand />
+      {/* ---------------------------------------------------------------- about */}
+      <section className="section" aria-labelledby="about-title">
+        <div className="container container-narrow">
+          {/* "Founders" is the section's heading, so the copy stays one sentence. */}
+          <h2 id="about-title" className={`eyebrow ${styles.aboutLabel}`}>
+            Founders
+          </h2>
+          <p className={styles.aboutCopy}>
+            Reputera is built by <strong>Ayaan Shah</strong> and <strong>Shahid Khan</strong>, who started
+            the company to build software the way it should be built: shaped around how a business actually
+            runs, and delivered by the people who actually build it — hands-on with every project, start to
+            finish.
+          </p>
+          <div className="btn-row" style={{ marginTop: '2rem' }}>
+            <Link href="/about" className="btn btn-ghost">
+              More about us
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

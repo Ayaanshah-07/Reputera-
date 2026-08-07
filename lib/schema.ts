@@ -4,7 +4,8 @@ import { services, site, type Service } from './site';
 
 export const organizationSchema = () => ({
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  // Both types, so the entity reads as an Organization and as a service provider.
+  '@type': ['Organization', 'ProfessionalService'],
   '@id': `${site.url}/#organization`,
   name: site.name,
   legalName: site.legalName,

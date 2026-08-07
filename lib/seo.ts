@@ -8,6 +8,9 @@ type PageMetaInput = {
   path: string;
   /** Set false for thin/duplicate pages. */
   index?: boolean;
+  /** Social-card overrides. Default to the SERP title/description. */
+  ogTitle?: string;
+  ogDescription?: string;
 };
 
 /**
@@ -15,8 +18,17 @@ type PageMetaInput = {
  * `title` is used verbatim (no template suffix) so each page controls its own
  * full SERP title.
  */
-export function pageMetadata({ title, description, path, index = true }: PageMetaInput): Metadata {
+export function pageMetadata({
+  title,
+  description,
+  path,
+  index = true,
+  ogTitle,
+  ogDescription,
+}: PageMetaInput): Metadata {
   const url = `${site.url}${path === '/' ? '' : path}`;
+  const socialTitle = ogTitle ?? title;
+  const socialDescription = ogDescription ?? description;
 
   return {
     title,
@@ -30,14 +42,14 @@ export function pageMetadata({ title, description, path, index = true }: PageMet
       siteName: site.name,
       locale: site.locale,
       url,
-      title,
-      description,
+      title: socialTitle,
+      description: socialDescription,
       images: [{ url: `${site.url}/opengraph-image`, width: 1200, height: 630, alt: site.name }],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: socialTitle,
+      description: socialDescription,
       images: [`${site.url}/opengraph-image`],
     },
   };
