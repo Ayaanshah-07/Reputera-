@@ -28,6 +28,15 @@ export type NavLink = {
 /** A titled block of copy. `href` turns the title into an internal link. */
 export type ServiceItem = { title: string; body: string; href?: string };
 
+/** A case study shown on a service page, optionally reframed for that page. */
+export type ServiceProofCase = {
+  /** Matches a slug in lib/industries.ts. */
+  slug: string;
+  title?: string;
+  copy?: string;
+  tags?: string[];
+};
+
 export type Service = {
   slug: string;
   /** Short label used in nav and cards. */
@@ -52,8 +61,13 @@ export type Service = {
   process: { eyebrow: string; heading: string; intro?: string; steps: ServiceItem[] };
   /** Optional "why custom" section. */
   why?: { eyebrow: string; heading: string; points: ServiceItem[] };
-  /** Optional proof section. Case studies are referenced by slug. */
-  proof?: { eyebrow: string; heading: string; caseSlugs: string[] };
+  /**
+   * Optional proof section. Cases reference lib/industries.ts by slug so the
+   * project has one record, while title/copy/tags can be reframed per page —
+   * the same build is the lead story on one service page and a supporting
+   * detail on another.
+   */
+  proof?: { eyebrow: string; heading: string; cases: ServiceProofCase[] };
   /** Optional closing CTA copy. Falls back to the site-wide default. */
   cta?: { heading: string; body: string };
   /** Each section below renders only when present and non-empty. */
@@ -149,7 +163,14 @@ export const services: Service[] = [
     proof: {
       eyebrow: 'Proof',
       heading: "Software we've built",
-      caseSlugs: ['footwear-manufacturing'],
+      cases: [
+        {
+          slug: 'footwear-manufacturing',
+          title: 'ERP system + AI image-matching feature',
+          copy: 'We documented and extended a full ERP for a footwear manufacturer, adding an AI feature that matches product photos to the correct catalog entries — cutting manual lookup time.',
+          tags: ['ERP', 'AI', 'Software'],
+        },
+      ],
     },
     cta: {
       heading: 'See it before you commit.',
@@ -330,87 +351,101 @@ export const services: Service[] = [
   {
     slug: 'ai-solutions',
     title: 'AI Solutions',
-    heading: 'AI Assistants, Agents & Chatbots',
-    metaTitle: 'AI Solutions: Assistants, Agents & Chatbots | Reputera',
+    heading: 'AI that does real work inside your business.',
+    metaTitle: 'AI Assistants, Agents & Chatbots for Business | Reputera',
     metaDescription:
-      'AI assistants, autonomous agents and chatbots trained on your business — grounded in your data, wired into your systems. Get a visual demo in 24–72 hours.',
+      'Reputera builds custom AI assistants, agents, and chatbots into how your business already works — automating real tasks. See a demo in 24–72 hours.',
     tag: 'AI Solutions',
     summary:
       'AI assistants, agents, and chatbots built into how your business already operates — automating real work, not bolted on as a gimmick.',
     intro:
-      'AI is only useful when it knows your business. We build assistants, agents and chatbots grounded in your documents, your data and your rules — connected to the systems where the work actually happens, with limits on what they are allowed to do.',
+      'AI is only useful if it actually saves you time. Reputera builds custom AI assistants, agents, and chatbots into how your business already operates — automating the repetitive work, answering the routine questions, and handling the tasks that pull your team away from what matters. Not a gimmick bolted on the side — intelligence built into the workflow.',
     accent: 'amber',
     icon: 'spark',
     build: {
-      eyebrow: 'What we deliver',
-      heading: 'AI Solutions, in practice.',
+      eyebrow: 'What we build',
+      heading: 'What we build',
+      intro:
+        'Three ways we put AI to work — each built around your actual processes, not a generic bot.',
       items: [
         {
-          title: 'AI assistants',
-          body: 'An assistant your team can ask about your own policies, contracts, inventory or history — answering from your data, with sources.',
+          title: 'AI Chatbots',
+          body: 'Chatbots that actually help — answering customer questions, qualifying leads, and handling support around the clock, trained on your business, not generic scripts.',
         },
         {
-          title: 'AI agents',
-          body: 'Agents that carry out multi-step work — triage, research, drafting, data entry, follow-up — inside guardrails you define.',
+          title: 'AI Agents',
+          body: 'Autonomous agents that carry out multi-step tasks for you — pulling information, taking actions, and moving work forward without someone driving every step.',
         },
         {
-          title: 'AI chatbots',
-          body: 'Customer-facing chat that qualifies enquiries, answers accurately and hands over to a human at the right moment.',
+          title: 'AI Assistants',
+          body: 'Internal assistants that give your team a faster way to work — searching your data, drafting, summarizing, and answering questions instantly instead of digging through systems.',
         },
         {
-          title: 'Document & data intelligence',
-          body: 'Turn invoices, forms, emails and PDFs into structured data your systems can actually use.',
-        },
-        {
-          title: 'AI inside your software',
-          body: 'Embedded directly into the product we build for you, rather than bolted on as a separate tool nobody opens.',
-        },
-        {
-          title: 'Evaluation & guardrails',
-          body: 'Accuracy testing, escalation paths, permissions and audit trails — so you can trust what it does unsupervised.',
+          title: 'AI Features in Your Software',
+          body: 'We embed AI directly into your existing systems and apps — smart search, image matching, automation — wherever it saves real time.',
+          href: '/services/software-development',
         },
       ],
     },
     process: {
-      eyebrow: 'How it runs',
-      heading: 'From first conversation to something you can use.',
+      eyebrow: 'How we work',
+      heading: "How we build AI that's actually useful",
+      intro:
+        "The difference between AI that helps and AI that gathers dust is whether it's built around a real problem. That's where we start.",
       steps: [
         {
-          title: 'Find the right use case',
-          body: 'We look for the repetitive, high-volume, judgement-light work where AI pays off — and say so when a simpler tool would win.',
+          title: 'Find the real time-sink',
+          body: 'We look for the repetitive, time-consuming work in your business where AI would genuinely help — not where it just looks impressive.',
         },
         {
-          title: 'Visual demo',
-          body: 'Within 24–72 hours you see the assistant or agent working on a slice of your real material, not a generic canned demo.',
+          title: 'Design around your data & process',
+          body: 'We build the AI to understand your business — your data, your rules, your tone — so its answers and actions are actually right.',
         },
         {
-          title: 'Ground it in your data',
-          body: 'We connect your documents and systems, then tune retrieval and prompting until the answers hold up under scrutiny.',
+          title: 'Build & ground it',
+          body: "We build the solution and ground it in your real information, so it's reliable instead of making things up.",
         },
         {
-          title: 'Measure & tighten',
-          body: 'Accuracy tracked against real cases, with guardrails and escalation adjusted before scope widens.',
+          title: 'Launch, monitor, improve',
+          body: 'We put it to work, watch how it performs, and keep sharpening it as your business grows.',
         },
       ],
     },
-    stack: ['Claude', 'OpenAI', 'RAG', 'Vector search', 'Python', 'TypeScript', 'MCP', 'Evals'],
-    faqs: [
-      {
-        question: 'Will the AI make things up?',
-        answer:
-          'We ground responses in your own approved sources, cite where answers come from, constrain what the model is allowed to assert, and test accuracy against real cases before anything goes live.',
-      },
-      {
-        question: 'Is our data used to train public models?',
-        answer:
-          'No. We use enterprise API configurations where your data is not used for training, and we agree data handling and retention with you in writing before any integration.',
-      },
-      {
-        question: 'What is the difference between an assistant, an agent and a chatbot?',
-        answer:
-          'An assistant answers questions from your knowledge on request. An agent takes actions across several steps to complete a task. A chatbot is the conversational front door, usually for customers. Many builds combine all three.',
-      },
-    ],
+    why: {
+      eyebrow: 'Why Reputera',
+      heading: 'AI with a purpose, not a buzzword',
+      points: [
+        {
+          title: 'Built around a real problem.',
+          body: 'We only put AI where it saves real time or money — not to tick a box.',
+        },
+        {
+          title: 'Grounded in your business.',
+          body: "Trained and grounded on your data and rules, so it's accurate and on-brand, not generic.",
+        },
+        {
+          title: 'Built to fit your systems.',
+          body: 'We build AI into the software and workflows you already use — not as one more disconnected tool.',
+        },
+      ],
+    },
+    proof: {
+      eyebrow: 'Proof',
+      heading: "AI we've built",
+      cases: [
+        {
+          slug: 'footwear-manufacturing',
+          title: 'AI image-matching feature inside an ERP system',
+          copy: 'Automatically matching product photos to the correct catalog entries, cutting out slow manual lookup.',
+          tags: ['AI', 'Software', 'ERP'],
+        },
+      ],
+    },
+    cta: {
+      heading: 'See what AI could do for you.',
+      body: "Tell us where your team loses the most time. We'll come back with a real, visual demo of an AI solution in 24–72 hours — no sales call, no commitment.",
+    },
+    showRelated: false,
   },
 ];
 

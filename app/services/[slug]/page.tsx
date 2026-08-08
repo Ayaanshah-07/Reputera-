@@ -39,9 +39,20 @@ export default async function ServicePage({ params }: Params) {
   if (!service) notFound();
 
   const others = services.filter((item) => item.slug !== service.slug);
-  const proofCases = service.proof
-    ? caseStudies.filter((study) => service.proof!.caseSlugs.includes(study.slug))
-    : [];
+  // Merge each proof case with its shared record, letting the page reframe it.
+  const proofCases = (service.proof?.cases ?? []).flatMap((entry) => {
+    const study = caseStudies.find((item) => item.slug === entry.slug);
+    if (!study) return [];
+    return [
+      {
+        slug: study.slug,
+        niche: study.niche,
+        title: entry.title ?? study.title,
+        copy: entry.copy ?? study.copy,
+        tags: entry.tags ?? study.tags,
+      },
+    ];
+  });
   const amber = service.accent === 'amber';
   const eyebrowClass = `eyebrow ${amber ? 'eyebrow-amber' : ''}`;
 
