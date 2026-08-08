@@ -65,9 +65,9 @@ export const serviceSchema = (service: Service) => ({
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: `${service.title} capabilities`,
-    itemListElement: service.capabilities.map((capability) => ({
+    itemListElement: service.build.items.map((item) => ({
       '@type': 'Offer',
-      itemOffered: { '@type': 'Service', name: capability.title, description: capability.body },
+      itemOffered: { '@type': 'Service', name: item.title, description: item.body },
     })),
   },
 });

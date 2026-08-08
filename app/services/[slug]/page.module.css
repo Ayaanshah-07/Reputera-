@@ -46,6 +46,61 @@
   color: var(--amber-400);
 }
 
+/* Cards whose title links out to another service page. */
+.itemLink {
+  color: var(--text-bright);
+}
+
+.itemLink:hover {
+  color: var(--cyan-400);
+}
+
+.stretch {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.itemMore {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--text-dim);
+  transition: color var(--transition);
+}
+
+.card:hover .itemMore,
+article:hover > .itemMore {
+  color: var(--cyan-400);
+}
+
+/* ------------------------------------------------------- proof cases --- */
+
+.case {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.caseNiche {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan-400) !important;
+}
+
+.case ul {
+  margin-top: auto;
+  padding-top: 0.85rem;
+}
+
+/* Keep a lone case study from stretching the full container width. */
+.singleCase {
+  max-width: 44rem;
+}
+
 /* ------------------------------------------------------------- process --- */
 
 .processSection {

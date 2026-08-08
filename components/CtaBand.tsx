@@ -14,7 +14,7 @@ type Props = {
 export default function CtaBand({
   title = 'Tell us the idea. See it in 24–72 hours.',
   body = 'Describe what you want built and we send back a visual demo — real screens, your business, no obligation and no cost.',
-  primaryLabel = 'Get a Demo',
+  primaryLabel = 'Start Your Demo',
   primaryHref = '/get-a-demo',
   secondaryLabel = 'Talk to us first',
   secondaryHref = '/contact',
@@ -29,7 +29,7 @@ export default function CtaBand({
           </div>
           <div className="btn-row">
             <Link href={primaryHref} className="btn btn-primary btn-lg">
-              {primaryLabel}
+              {primaryLabel} <span aria-hidden="true">→</span>
             </Link>
             <Link href={secondaryHref} className="btn btn-ghost btn-lg">
               {secondaryLabel}
