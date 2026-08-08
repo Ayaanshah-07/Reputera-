@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ServiceIcon from './ServiceIcon';
+import ServiceCardVisual from './ServiceCardVisual';
 import type { Service } from '@/lib/site';
 import styles from './ServiceCard.module.css';
 
@@ -7,14 +7,13 @@ export default function ServiceCard({ service, index = 0 }: { service: Service; 
   return (
     <article
       className={`card card-hover reveal ${styles.card} ${service.flagship ? styles.flagship : ''} ${
-        service.accent === 'amber' ? styles.amber : ''
+        service.accent === 'amber' ? `${styles.amber} amberCard` : ''
       }`}
       data-reveal-index={index}
     >
       <span className={`${styles.flag} ${service.flagship ? styles.flagLead : ''}`}>{service.tag}</span>
-      <span className={styles.icon}>
-        <ServiceIcon icon={service.icon} />
-      </span>
+      {/* The preview strip carries the card's imagery, so no separate icon disc. */}
+      <ServiceCardVisual icon={service.icon} />
       <h3>
         <Link href={`/services/${service.slug}`} className={styles.link}>
           <span className={styles.stretch} />

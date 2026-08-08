@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import ServiceCard from '@/components/ServiceCard';
+import CaseVisual from '@/components/CaseVisual';
+import DemoVisual from '@/components/DemoVisual';
+import ReviewsVisual from '@/components/ReviewsVisual';
 import { pageMetadata } from '@/lib/seo';
 import { services } from '@/lib/site';
 import { caseStudies } from '@/lib/industries';
@@ -92,9 +95,7 @@ export default function HomePage() {
             </div>
 
             <aside className={styles.promiseBox} aria-label="Demo turnaround">
-              <p className={styles.promiseValue}>24–72</p>
-              <p className={styles.promiseLabel}>Hours to your demo.</p>
-              <p className={styles.promiseNote}>No commitment. Just proof we can build it.</p>
+              <DemoVisual />
             </aside>
           </div>
         </div>
@@ -112,6 +113,7 @@ export default function HomePage() {
           <div className="grid grid-2">
             {caseStudies.map((study, index) => (
               <article key={study.slug} className={`card card-hover reveal ${styles.case}`} data-reveal-index={index}>
+                <CaseVisual slug={study.slug} />
                 <p className={styles.caseNiche}>{study.niche}</p>
                 <h3>{study.title}</h3>
                 <p>{study.copy}</p>
@@ -151,32 +153,55 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            <p className={styles.reviewsMotto}>
-              From the software we build
-              <br />
-              to the reputation you keep.
-            </p>
+            <ReviewsVisual />
           </div>
         </div>
       </section>
 
       {/* ---------------------------------------------------------------- about */}
       <section className="section" aria-labelledby="about-title">
-        <div className="container container-narrow">
-          {/* "Founders" is the section's heading, so the copy stays one sentence. */}
-          <h2 id="about-title" className={`eyebrow ${styles.aboutLabel}`}>
-            Founders
-          </h2>
-          <p className={styles.aboutCopy}>
-            Reputera is built by <strong>Ayaan Shah</strong> and <strong>Shahid Khan</strong>, who started
-            the company to build software the way it should be built: shaped around how a business actually
-            runs, and delivered by the people who actually build it — hands-on with every project, start to
-            finish.
-          </p>
-          <div className="btn-row" style={{ marginTop: '2rem' }}>
-            <Link href="/about" className="btn btn-ghost">
-              More about us
-            </Link>
+        <div className="container">
+          <div className={styles.founders}>
+            <span className={styles.quoteMark} aria-hidden="true">
+              &ldquo;
+            </span>
+
+            <div className={styles.foundersCopy}>
+              {/* "Founders" is the section's heading, so the copy stays one sentence. */}
+              <h2 id="about-title" className={`eyebrow ${styles.aboutLabel}`}>
+                Founders
+              </h2>
+              <p className={styles.aboutCopy}>
+                Reputera is built by <strong>Ayaan Shah</strong> and <strong>Shahid Khan</strong>, who
+                started the company to build software the way it should be built: shaped around how a
+                business actually runs, and delivered by the people who actually build it — hands-on with
+                every project, start to finish.
+              </p>
+
+              <ul className={styles.founderList}>
+                {[
+                  { name: 'Ayaan Shah', initials: 'AS' },
+                  { name: 'Shahid Khan', initials: 'SK' },
+                ].map((founder) => (
+                  <li key={founder.name}>
+                    {/* TODO(brand): swap the initials disc for a photo when available. */}
+                    <span className={styles.founderAvatar} aria-hidden="true">
+                      {founder.initials}
+                    </span>
+                    <span>
+                      <strong>{founder.name}</strong>
+                      <em>Co-founder</em>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="btn-row" style={{ marginTop: '1.75rem' }}>
+                <Link href="/about" className="btn btn-ghost">
+                  More about us
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

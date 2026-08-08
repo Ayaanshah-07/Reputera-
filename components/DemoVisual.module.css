@@ -1,0 +1,137 @@
+.wrap {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid rgba(245, 185, 66, 0.3);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(480px 240px at 50% 0%, rgba(245, 185, 66, 0.16), transparent 68%),
+    rgba(10, 16, 36, 0.82);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 30px 80px -44px rgba(0, 0, 0, 0.95);
+}
+
+/* -------------------------------------------------------- screen stack --- */
+
+.stack {
+  position: relative;
+  height: 9.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.screen {
+  position: absolute;
+  inset-inline: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: rgba(4, 7, 15, 0.9);
+}
+
+.screenBack {
+  top: 0;
+  height: 7.5rem;
+  transform: translateX(-9%) rotate(-5deg) scale(0.9);
+  opacity: 0.4;
+}
+
+.screenMid {
+  top: 0.35rem;
+  height: 8rem;
+  transform: translateX(6%) rotate(4deg) scale(0.95);
+  opacity: 0.65;
+}
+
+.screenFront {
+  top: 0.75rem;
+  height: 8.5rem;
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+  background: linear-gradient(165deg, rgba(18, 28, 61, 0.98), rgba(7, 11, 24, 0.98));
+  box-shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.9);
+  animation: rise 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.bar {
+  height: 6px;
+  width: 45%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--cyan-400), rgba(34, 211, 238, 0.2));
+}
+
+.blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.42rem;
+}
+
+.block {
+  height: 2.1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.block:last-child {
+  background: rgba(245, 185, 66, 0.09);
+  border-color: rgba(245, 185, 66, 0.22);
+}
+
+.line {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(148, 178, 226, 0.18);
+}
+
+.lineShort {
+  width: 62%;
+}
+
+.cta {
+  margin-top: auto;
+  height: 1.1rem;
+  width: 5.5rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(100deg, var(--amber-400), var(--amber-500));
+}
+
+/* ------------------------------------------------------------ promise --- */
+
+.promise {
+  text-align: center;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--amber-400);
+}
+
+.label {
+  margin-top: 0.55rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--step-1);
+  color: var(--text-bright);
+  letter-spacing: -0.02em;
+}
+
+.note {
+  margin-top: 0.4rem;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screenFront {
+    animation: none;
+  }
+}

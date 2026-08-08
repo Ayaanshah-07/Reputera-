@@ -1,0 +1,160 @@
+.wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 5.25rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(300px 120px at 50% 0%, rgba(34, 211, 238, 0.1), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(148, 178, 226, 0.05) 0 1px, transparent 1px 22px),
+    rgba(4, 7, 15, 0.45);
+  overflow: hidden;
+}
+
+/* Amber cards get the warm wash instead. */
+:global(.amberCard) .wrap {
+  background:
+    radial-gradient(300px 120px at 50% 0%, rgba(245, 185, 66, 0.1), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(148, 178, 226, 0.05) 0 1px, transparent 1px 22px),
+    rgba(4, 7, 15, 0.45);
+}
+
+/* ----------------------------------------------------------- software --- */
+
+.rows {
+  display: grid;
+  gap: 0.3rem;
+  width: 58%;
+}
+
+.rows i {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(148, 178, 226, 0.22);
+}
+
+.rows i:first-child {
+  width: 45%;
+  background: linear-gradient(90deg, var(--cyan-400), rgba(34, 211, 238, 0.25));
+}
+
+.rows i:nth-child(2) { width: 100%; }
+.rows i:nth-child(3) { width: 78%; }
+.rows i:nth-child(4) {
+  width: 60%;
+  background: linear-gradient(90deg, var(--amber-400), rgba(245, 185, 66, 0.2));
+}
+
+/* ---------------------------------------------------------------- app --- */
+
+.phoneShape {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  width: 2.1rem;
+  height: 3.4rem;
+  padding: 0.3rem 0.25rem;
+  border-radius: 7px;
+  border: 1px solid var(--line-strong);
+  background: rgba(10, 16, 36, 0.9);
+}
+
+.phoneShape em {
+  display: block;
+  height: 0.85rem;
+  border-radius: 3px;
+  background: linear-gradient(140deg, rgba(245, 185, 66, 0.5), rgba(245, 185, 66, 0.12));
+}
+
+.phoneShape i {
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(148, 178, 226, 0.25);
+}
+
+.phoneBack {
+  order: -1;
+  height: 2.9rem;
+  opacity: 0.45;
+  transform: rotate(-8deg);
+}
+
+/* -------------------------------------------------------------- web --- */
+
+.browser {
+  display: block;
+  width: 62%;
+  border-radius: 6px;
+  border: 1px solid var(--line-strong);
+  background: rgba(10, 16, 36, 0.9);
+  overflow: hidden;
+}
+
+.browser b {
+  display: block;
+  height: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.browserBody {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.4rem;
+}
+
+.browserBody i {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(148, 178, 226, 0.22);
+}
+
+.browserBody i:first-child {
+  width: 70%;
+  background: linear-gradient(90deg, var(--cyan-400), rgba(34, 211, 238, 0.2));
+}
+
+/* --------------------------------------------------------------- ai --- */
+
+.nodes {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nodes i {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--amber-400);
+  box-shadow: 0 0 0 4px rgba(245, 185, 66, 0.12);
+  animation: twinkle 3s ease-in-out infinite;
+  animation-delay: calc(var(--n) * 260ms);
+}
+
+.nodes i:nth-child(even) {
+  width: 6px;
+  height: 6px;
+  background: var(--cyan-400);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.12);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodes i {
+    animation: none;
+    opacity: 0.85;
+  }
+}

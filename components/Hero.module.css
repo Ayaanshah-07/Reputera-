@@ -1,26 +1,26 @@
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: min(92vh, 900px);
-  display: flex;
-  align-items: center;
-  padding-block: clamp(3.5rem, 10vw, 7rem) clamp(3rem, 7vw, 5.5rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 4vw, 3rem);
   margin-top: -4.5rem; /* slide under the transparent sticky header */
-  padding-top: calc(4.5rem + clamp(3.5rem, 10vw, 7rem));
+  padding-top: calc(4.5rem + clamp(2.5rem, 6vw, 4.5rem));
   overflow: hidden;
 }
 
 .inner {
   position: relative;
   z-index: 1;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
   align-items: center;
 }
 
+.copy {
+  min-width: 0;
+}
+
 .badge {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   animation: fadeUp 700ms 60ms both;
 }
 
@@ -40,73 +40,85 @@
 }
 
 .title {
-  font-size: var(--step-5);
-  max-width: 16ch;
+  font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.35rem);
+  max-width: 13ch;
   animation: fadeUp 800ms 120ms both;
 }
 
 .lead {
-  margin-top: 1.35rem;
-  max-width: 62ch;
+  margin-top: 1.1rem;
+  max-width: 52ch;
+  font-size: var(--step-1);
+  color: var(--text-muted);
+  line-height: 1.55;
   animation: fadeUp 800ms 220ms both;
 }
 
 .actions {
-  justify-content: center;
-  margin-top: 2.25rem;
+  margin-top: 1.85rem;
   animation: fadeUp 800ms 320ms both;
 }
 
+.visual {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  animation: fadeIn 1000ms 260ms both;
+}
+
+/* --------------------------------------------------------------- proof --- */
+
 .proof {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  width: min(100%, 52rem);
-  margin: clamp(2.75rem, 6vw, 4rem) 0 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--line);
-  overflow: hidden;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: clamp(2rem, 3.5vw, 2.75rem) 0 0;
   animation: fadeUp 900ms 420ms both;
 }
 
 .proofItem {
-  padding: 1.35rem 1rem;
-  background: rgba(10, 16, 36, 0.72);
+  padding: 0.85rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(10, 16, 36, 0.6);
   backdrop-filter: blur(8px);
 }
 
 .proofValue {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   font-weight: 600;
   color: var(--text-bright);
   letter-spacing: -0.03em;
 }
 
 .proofLabel {
-  margin: 0.3rem 0 0;
-  font-size: var(--step--1);
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
   color: var(--text-muted);
+  line-height: 1.35;
 }
 
 /* ------------------------------------------- Reputera Reviews banner --- */
 
+.bannerWrap {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
 .reviewsBanner {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.75rem;
   align-items: center;
-  width: min(100%, 52rem);
-  margin-top: 1rem;
-  padding: 1.15rem 1.35rem;
-  text-align: left;
+  padding: 1rem 1.35rem;
   border: 1px solid rgba(245, 185, 66, 0.25);
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(420px 200px at 100% 0%, rgba(245, 185, 66, 0.14), transparent 65%),
-    rgba(10, 16, 36, 0.72);
-  backdrop-filter: blur(8px);
-  animation: fadeUp 900ms 500ms both;
+    radial-gradient(520px 200px at 92% 0%, rgba(245, 185, 66, 0.14), transparent 65%),
+    rgba(10, 16, 36, 0.75);
+  backdrop-filter: blur(10px);
+  animation: fadeUp 900ms 520ms both;
 }
 
 .reviewsBadge {
@@ -117,7 +129,7 @@
   border: 1px solid rgba(245, 185, 66, 0.35);
   background: rgba(245, 185, 66, 0.1);
   color: var(--amber-400);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -126,13 +138,24 @@
 
 .reviewsTitle {
   font-size: var(--step-1);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .reviewsBody p {
   font-size: var(--step--1);
   color: var(--text-muted);
-  max-width: 52ch;
+  max-width: 54ch;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 0.15rem;
+  color: var(--amber-400);
+}
+
+.stars svg {
+  width: 15px;
+  height: 15px;
 }
 
 .reviewsLink {
@@ -152,28 +175,44 @@
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: none; }
 }
 
 @media (min-width: 640px) {
-  .proof {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .reviewsBanner {
-    grid-template-columns: auto 1fr auto;
-    gap: 1.35rem;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1.25rem;
   }
 
   .reviewsBadge {
     align-self: center;
+  }
+}
+
+@media (min-width: 1000px) {
+  .inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+}
+
+@media (max-width: 999px) {
+  .title,
+  .lead {
+    max-width: 100%;
+  }
+
+  /* Headline stays first on small screens — the artwork follows the copy so
+     the h1 and primary CTA are above the fold. */
+  .visual {
+    max-width: 26rem;
+    margin-inline: auto;
   }
 }
 
@@ -183,6 +222,7 @@
   .lead,
   .actions,
   .proof,
+  .visual,
   .reviewsBanner {
     animation: none;
   }

@@ -1,0 +1,311 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
+  perspective: 1400px;
+}
+
+.glow {
+  position: absolute;
+  inset: -18% -12% -22%;
+  background:
+    radial-gradient(closest-side, rgba(34, 211, 238, 0.28), transparent 72%),
+    radial-gradient(closest-side at 78% 82%, rgba(245, 185, 66, 0.22), transparent 70%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------- window --- */
+
+.window {
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(165deg, rgba(18, 28, 61, 0.96), rgba(7, 11, 24, 0.96));
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  overflow: hidden;
+  transform: rotateX(6deg) rotateY(-8deg);
+  animation: tilt 12s ease-in-out infinite;
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotateX(6deg) rotateY(-8deg) translateY(0); }
+  50% { transform: rotateX(3deg) rotateY(-4deg) translateY(-10px); }
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.95rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+
+.dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.dots i:first-child { background: rgba(245, 185, 66, 0.7); }
+.dots i:nth-child(2) { background: rgba(34, 211, 238, 0.7); }
+
+.titleText {
+  font-size: 0.76rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(52, 227, 245, 0.3);
+  background: rgba(52, 227, 245, 0.1);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
+}
+
+.live em {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan-400);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+/* --------------------------------------------------------------- body --- */
+
+.body {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.9rem;
+  padding: 0.95rem;
+}
+
+.sidebar {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.sidebar span {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(148, 178, 226, 0.16);
+}
+
+.navActive {
+  background: linear-gradient(90deg, var(--cyan-500), rgba(34, 211, 238, 0.25)) !important;
+}
+
+.content {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.tile {
+  padding: 0.6rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tileValue {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  letter-spacing: -0.02em;
+}
+
+.amberValue {
+  color: var(--amber-400);
+}
+
+.tileLabel {
+  display: block;
+  width: 68%;
+  height: 4px;
+  margin-top: 0.4rem;
+  border-radius: 2px;
+  background: rgba(148, 178, 226, 0.18);
+}
+
+/* -------------------------------------------------------------- chart --- */
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  height: 5.5rem;
+  padding: 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.bar {
+  flex: 1;
+  height: var(--h);
+  border-radius: 3px 3px 1px 1px;
+  background: linear-gradient(180deg, var(--cyan-400), rgba(34, 211, 238, 0.15));
+  transform-origin: bottom;
+  animation: grow 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(600ms + var(--i) * 90ms);
+}
+
+.bar:nth-child(4) {
+  background: linear-gradient(180deg, var(--amber-400), rgba(245, 185, 66, 0.15));
+}
+
+@keyframes grow {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+/* --------------------------------------------------------------- rows --- */
+
+.rows {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.rowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan-500);
+  flex: 0 0 6px;
+}
+
+.row:nth-child(2) .rowDot { background: var(--amber-400); }
+
+.rowLine {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(148, 178, 226, 0.2);
+}
+
+.row:nth-child(2) .rowLine { max-width: 72%; }
+.row:nth-child(3) .rowLine { max-width: 58%; }
+
+.rowPill {
+  width: 2.1rem;
+  height: 11px;
+  border-radius: var(--radius-full);
+  background: rgba(34, 211, 238, 0.18);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+}
+
+/* -------------------------------------------------------------- chips --- */
+
+.chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--line-strong);
+  background: rgba(10, 16, 36, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.9);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-bright);
+  white-space: nowrap;
+}
+
+.chipOne {
+  top: 12%;
+  left: -8%;
+  animation: bob 7s ease-in-out infinite;
+}
+
+.chipTwo {
+  bottom: 12%;
+  right: -6%;
+  animation: bob 7s ease-in-out infinite 1.6s;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+.chipIcon {
+  display: grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.16);
+  color: var(--cyan-400);
+}
+
+.chipIconAmber {
+  background: rgba(245, 185, 66, 0.16);
+  color: var(--amber-400);
+}
+
+.chipIcon svg {
+  width: 11px;
+  height: 11px;
+}
+
+@media (max-width: 560px) {
+  .chipOne { left: -2%; }
+  .chipTwo { right: -2%; }
+  .chip { font-size: 0.7rem; padding: 0.4rem 0.7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window,
+  .chip,
+  .live em,
+  .bar {
+    animation: none;
+  }
+
+  .window {
+    transform: none;
+  }
+}
