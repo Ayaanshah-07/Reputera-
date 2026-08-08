@@ -56,6 +56,8 @@ export type Service = {
   heading: string;
   metaTitle: string;
   metaDescription: string;
+  /** schema.org serviceType. Defaults to `title` when the two match. */
+  serviceType?: string;
   /** Small label shown on the service card. */
   tag: string;
   /** Card copy, also used in schema. Leads with the target keyword. */
@@ -96,6 +98,7 @@ export const services: Service[] = [
     metaTitle: 'Custom Software Development Company | Reputera',
     metaDescription:
       'Reputera builds custom software around your exact business logic — ERP systems, internal tools, workflow automation, and AI features. See a demo in 24–72 hrs.',
+    serviceType: 'Custom Software Development',
     tag: 'Lead offering',
     summary:
       'Custom software mapped to how your business actually runs — ERP systems, internal tools, and workflow automation, including AI-powered features. We build the system around your logic, so it fits like it was always yours.',
@@ -192,87 +195,102 @@ export const services: Service[] = [
   {
     slug: 'app-development',
     title: 'App Development',
-    heading: 'Mobile & Web App Development',
-    metaTitle: 'Mobile & Web App Development | Reputera',
+    heading: 'Apps built for how your people actually work.',
+    metaTitle: 'Custom App Development Company | Reputera',
     metaDescription:
-      'iOS, Android and web apps designed around your users and your business logic. Native-feeling, fast, and built to ship. Get a visual demo in 24–72 hours.',
+      'Reputera builds custom mobile and web apps around how your business works — for your team or your customers. See a working demo in 24–72 hours.',
+    serviceType: 'Custom App Development',
     tag: 'Mobile & web',
     summary:
       "Custom apps that put your workflow in your team's or customers' pocket — built for how they'll actually use it, not a generic shell forced to fit.",
     intro:
-      'An app earns its place on someone\'s home screen or it gets deleted. We design for the two or three things your users genuinely need to do, make those effortless, and build the rest of the business logic in behind them.',
+      'A generic app forces your team or customers to adapt to it. Reputera builds custom apps around your real workflow — mobile and web apps that do exactly what your business needs, on the device where the work actually happens.',
     accent: 'amber',
     icon: 'mobile',
     build: {
-      eyebrow: 'What we deliver',
-      heading: 'App Development, in practice.',
+      eyebrow: 'What we build',
+      heading: 'What we build',
+      intro:
+        "Whether it's an app your team uses in the field or one your customers use every day, we build it around the real job it has to do.",
       items: [
         {
-          title: 'iOS & Android apps',
-          body: 'One codebase, native feel on both platforms — with the platform conventions users expect, not a website in a wrapper.',
+          title: 'Business & Internal Apps',
+          body: "Apps that put your operations in your team's hands — field tools, tracking apps, and internal systems that work wherever your people do, online or off.",
         },
         {
-          title: 'Progressive web apps',
-          body: 'Installable, offline-capable apps that skip the app stores entirely when that is the faster route to your users.',
+          title: 'Customer-Facing Apps',
+          body: 'Apps your customers actually want to use — built around their journey, fast, and designed to keep them coming back.',
         },
         {
-          title: 'Customer & field-team apps',
-          body: 'Booking, ordering, tracking, job sheets, inspections and proof-of-work capture — built for real conditions and bad signal.',
+          title: 'Web Apps',
+          body: 'Powerful browser-based apps with no install required — dashboards, portals, and tools your users can open from anywhere.',
         },
         {
-          title: 'Backends & APIs',
-          body: 'Authentication, payments, push notifications, sync and reporting — the unglamorous half that decides whether an app holds up.',
-        },
-        {
-          title: 'Store launch & release',
-          body: 'App Store and Play Store submission, review handling, staged rollouts and the release pipeline behind them.',
-        },
-        {
-          title: 'Post-launch iteration',
-          body: 'Analytics on what users actually tap, then focused releases that improve the numbers that matter to you.',
+          title: 'AI-Enabled Apps',
+          body: 'Apps with intelligence built in — from smart automation to AI assistants embedded right in the interface.',
+          href: '/services/ai-solutions',
         },
       ],
     },
     process: {
-      eyebrow: 'How it runs',
-      heading: 'From first conversation to something you can use.',
+      eyebrow: 'How we work',
+      heading: 'How we build apps that get used',
+      intro:
+        'An app only earns its place if people actually use it. Our process is built to make sure they do.',
       steps: [
         {
-          title: 'Define the core job',
-          body: 'We identify the handful of actions the app exists to make effortless, and ruthlessly protect them from feature creep.',
+          title: 'Understand the real job',
+          body: "We learn who's using the app and what they're actually trying to get done — in the field, at a desk, or on the go.",
         },
         {
-          title: 'Visual demo',
-          body: 'Real screens within 24–72 hours — the flow, the interface, the feel — before a line of production code is written.',
+          title: 'Design around the user',
+          body: 'We shape the app around how your users move and think, so it feels obvious to use from the first tap.',
         },
         {
           title: 'Build & test on real devices',
-          body: 'Tested on real hardware and real networks, not just a simulator on a fast connection.',
+          body: 'We build for real-world conditions — different devices, patchy connections, busy hands — not just a perfect demo screen.',
         },
         {
-          title: 'Launch & improve',
-          body: 'We handle the store submissions, then keep shipping against what the usage data tells us.',
+          title: 'Launch and refine',
+          body: "We get it into your users' hands, then refine based on how it's actually used.",
         },
       ],
     },
-    stack: ['React Native', 'Expo', 'Swift', 'Kotlin', 'TypeScript', 'Node.js', 'Firebase', 'PostgreSQL'],
-    faqs: [
-      {
-        question: 'Do you build for both iOS and Android?',
-        answer:
-          'Yes. We usually build both from a single codebase so features and fixes land on both platforms at once, and go fully native when a specific requirement genuinely calls for it.',
-      },
-      {
-        question: 'Can you take over an existing app?',
-        answer:
-          'Often, yes. We start with an audit of the code, dependencies and release setup, then give you a straight answer on whether to continue it or rebuild.',
-      },
-      {
-        question: 'Do you handle App Store and Play Store submission?',
-        answer:
-          'We do — including store listings, review responses and staged rollouts, so launch day is not the day you discover the process.',
-      },
-    ],
+    why: {
+      eyebrow: 'Why Reputera',
+      heading: 'Why our apps work',
+      points: [
+        {
+          title: 'Built around your workflow.',
+          body: "We don't start from a template. We start from how your business and your users actually operate.",
+        },
+        {
+          title: 'One team, all the way through.',
+          body: 'The people designing your app are the people building it — no handoffs, no telephone game.',
+        },
+        {
+          title: 'Ready for the real world.',
+          body: 'We build for messy reality — real devices, real connectivity, real users — not just a clean pitch demo.',
+        },
+      ],
+    },
+    proof: {
+      eyebrow: 'Proof',
+      heading: "Apps we've built",
+      cases: [
+        {
+          slug: 'construction-fit-out',
+          title: 'Site snagging application',
+          copy: 'A field-ready app for tracking construction defects on site, with photo upload and AI-generated issue descriptions — built to work in real site conditions, not just the office.',
+          tags: ['App', 'AI', 'Field tools'],
+        },
+      ],
+    },
+    cta: {
+      heading: 'See your app before you commit.',
+      body: "Tell us what you need your app to do. We'll come back with a real, visual demo in 24–72 hours — no sales call, no commitment.",
+    },
+    showRelated: false,
   },
   {
     slug: 'website-development',

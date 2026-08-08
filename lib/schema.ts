@@ -57,7 +57,7 @@ export const serviceSchema = (service: Service) => ({
   '@type': 'Service',
   '@id': `${site.url}/services/${service.slug}#service`,
   name: service.heading,
-  serviceType: service.title,
+  serviceType: service.serviceType ?? service.title,
   description: service.metaDescription,
   url: `${site.url}/services/${service.slug}`,
   provider: { '@id': `${site.url}/#organization` },
