@@ -138,6 +138,15 @@ export default async function ServicePage({ params }: Params) {
                     Explore →
                   </span>
                 )}
+                {item.links && item.links.length > 0 && (
+                  <p className={styles.itemLinks}>
+                    {item.links.map((link) => (
+                      <Link key={link.href} href={link.href}>
+                        {link.label} <span aria-hidden="true">→</span>
+                      </Link>
+                    ))}
+                  </p>
+                )}
               </article>
             ))}
           </div>

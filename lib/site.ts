@@ -25,8 +25,19 @@ export type NavLink = {
   children?: NavLink[];
 };
 
-/** A titled block of copy. `href` turns the title into an internal link. */
-export type ServiceItem = { title: string; body: string; href?: string };
+/**
+ * A titled block of copy.
+ * `href` turns the whole card into a link to another page.
+ * `links` adds explicit cross-links beneath the copy, for items that point at
+ * more than one page. Use one or the other — a stretched card link would sit
+ * on top of the inline ones.
+ */
+export type ServiceItem = {
+  title: string;
+  body: string;
+  href?: string;
+  links?: { label: string; href: string }[];
+};
 
 /** A case study shown on a service page, optionally reframed for that page. */
 export type ServiceProofCase = {
@@ -266,87 +277,92 @@ export const services: Service[] = [
   {
     slug: 'website-development',
     title: 'Website Development',
-    heading: 'Website Design & Development',
-    metaTitle: 'Website Design & Development | Reputera',
+    heading: 'Websites that work as hard as you do.',
+    metaTitle: 'Custom Website Development Company | Reputera',
     metaDescription:
-      'Fast, SEO-ready websites built to convert — custom design, semantic markup, Core Web Vitals in the green. Get a visual demo in 24–72 hours.',
+      'Reputera builds fast, custom websites built to convert — designed around your business and your customers. See a working demo in 24–72 hours.',
     tag: 'Web',
     summary:
       'Fast, sharp, search-friendly websites built to convert — the front door to everything else Reputera builds for you.',
     intro:
-      'Your website is usually the first thing anyone checks before deciding whether to trust you. We build sites that load fast, read clearly, rank well and turn visitors into enquiries — designed for your business rather than dropped onto a theme.',
+      'Your website is often the first thing a customer sees — it should do more than look good. Reputera builds fast, custom websites designed around your business and built to convert visitors into customers, with the search visibility to get found in the first place.',
     accent: 'cyan',
     icon: 'globe',
     build: {
-      eyebrow: 'What we deliver',
-      heading: 'Website Development, in practice.',
+      eyebrow: 'What we build',
+      heading: 'What we build',
+      intro:
+        'From a sharp marketing site to a full web platform, we build websites that earn their place as your best salesperson.',
       items: [
         {
-          title: 'Marketing & brand sites',
-          body: 'Custom design and copy structure that says what you do in seconds and gives people an obvious next step.',
+          title: 'Marketing & Business Websites',
+          body: 'Clean, fast, credible websites that tell your story and turn visitors into enquiries — the front door to everything you do.',
         },
         {
-          title: 'Technical SEO foundations',
-          body: 'Semantic HTML, correct heading hierarchy, metadata, sitemaps, structured data and internal linking done properly from day one.',
+          title: 'Landing Pages',
+          body: 'Focused, high-converting pages built around a single goal — a campaign, a launch, a product.',
         },
         {
-          title: 'Performance engineering',
-          body: 'Core Web Vitals in the green — because a slow site quietly loses both rankings and enquiries.',
+          title: 'Web Platforms & Portals',
+          body: 'When you need more than a website — customer portals, booking systems, and web platforms built around your workflow.',
+          links: [
+            { label: 'Software Development', href: '/services/software-development' },
+            { label: 'App Development', href: '/services/app-development' },
+          ],
         },
         {
-          title: 'E-commerce & booking',
-          body: 'Storefronts, checkouts, booking flows and payment integration built to reduce drop-off at each step.',
-        },
-        {
-          title: 'Content management',
-          body: 'Edit your own pages without breaking the design or calling us — a CMS scoped to what you actually need to change.',
-        },
-        {
-          title: 'Analytics & conversion tracking',
-          body: 'Know where enquiries come from and which pages earn them, with tracking configured to answer real questions.',
+          title: 'SEO-Ready Builds',
+          body: 'Every site is built clean and search-friendly from the ground up — fast loading, structured properly, and ready to rank.',
         },
       ],
     },
     process: {
-      eyebrow: 'How it runs',
-      heading: 'From first conversation to something you can use.',
+      eyebrow: 'How we work',
+      heading: 'How we build websites that convert',
+      intro:
+        "A good-looking site that doesn't convert is a missed opportunity. We build for results, not just aesthetics.",
       steps: [
         {
-          title: 'Positioning & structure',
-          body: 'We work out what the site has to prove, to whom, and in what order — then map pages to that.',
+          title: 'Understand your goal',
+          body: "We start with what the site needs to achieve — leads, sales, sign-ups — and who it's speaking to.",
         },
         {
-          title: 'Visual demo',
-          body: 'A designed page in your brand within 24–72 hours, so the direction is settled before the build starts.',
+          title: 'Design with intent',
+          body: 'Every section earns its place, guiding visitors toward the action that matters to your business.',
         },
         {
-          title: 'Build & optimise',
-          body: 'Responsive build, accessibility checks, performance budgets and technical SEO baked in as we go.',
+          title: 'Build fast & search-ready',
+          body: 'We build clean, fast, SEO-friendly code — so the site loads quickly and gets found.',
         },
         {
-          title: 'Launch & grow',
-          body: 'Clean launch with redirects and tracking in place, then ongoing improvements based on real search and conversion data.',
+          title: 'Launch and improve',
+          body: 'We launch, measure how visitors behave, and refine to lift conversion over time.',
         },
       ],
     },
-    stack: ['Next.js', 'React', 'TypeScript', 'Headless CMS', 'Vercel', 'Cloudflare', 'Core Web Vitals'],
-    faqs: [
-      {
-        question: 'Will I be able to edit the website myself?',
-        answer:
-          'Yes. We connect a CMS scoped to the parts you should be changing — copy, images, posts, listings — while the design system stays protected from accidental breakage.',
-      },
-      {
-        question: 'Is SEO included?',
-        answer:
-          'The technical foundations are: semantic markup, heading hierarchy, metadata, structured data, sitemaps, performance and internal linking. Ongoing content and campaign work is a separate conversation.',
-      },
-      {
-        question: 'Can you redesign an existing site without losing rankings?',
-        answer:
-          'Yes. We map existing URLs, preserve or redirect them, keep the content that already earns traffic, and monitor rankings through the transition.',
-      },
-    ],
+    why: {
+      eyebrow: 'Why Reputera',
+      heading: 'More than a pretty page',
+      points: [
+        {
+          title: 'Built to convert.',
+          body: 'We design around your business goals, so your site actively brings in customers instead of just sitting there.',
+        },
+        {
+          title: 'Fast and search-friendly.',
+          body: 'Speed and SEO are built in from day one — not bolted on after launch.',
+        },
+        {
+          title: 'Built around your brand.',
+          body: 'No cookie-cutter templates — a site that looks and feels like you, not everyone else.',
+        },
+      ],
+    },
+    cta: {
+      heading: 'See your site before you commit.',
+      body: "Tell us what you need your website to do. We'll come back with a real, visual demo in 24–72 hours — no sales call, no commitment.",
+    },
+    showRelated: false,
   },
   {
     slug: 'ai-solutions',
