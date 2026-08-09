@@ -313,11 +313,11 @@ export const services: Service[] = [
       'Reputera builds fast, custom websites built to convert — designed around your business and your customers. See a working demo in 24–72 hours.',
     tag: 'Web',
     summary:
-      'Fast, sharp, search-friendly websites built to convert — the front door to everything else Reputera builds for you.',
+      'Fast, sharp, search-friendly websites built to convert — the front door to everything else you do. From marketing sites to landing pages and web platforms, every build is designed around your goals and coded clean for speed and SEO.',
     hub: {
       tag: 'Web',
       copy:
-        "Fast, custom, search-friendly websites built to convert — the front door to everything else you do.",
+        'Fast, sharp, search-friendly websites built to convert — the front door to everything else you do. From marketing sites to landing pages and web platforms, every build is designed around your goals and coded clean for speed and SEO.',
     },
     intro:
       'Your website is often the first thing a customer sees — it should do more than look good. Reputera builds fast, custom websites designed around your business and built to convert visitors into customers, with the search visibility to get found in the first place.',
