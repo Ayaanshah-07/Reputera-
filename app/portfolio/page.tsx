@@ -1,15 +1,21 @@
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import CaseVisual from '@/components/CaseVisual';
+import OutcomeIcon from '@/components/OutcomeIcon';
 import CtaBand from '@/components/CtaBand';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
+import { workSections } from '@/lib/work';
 import { caseStudies } from '@/lib/industries';
+import { site } from '@/lib/site';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
-  title: 'Portfolio | Custom Software, App & AI Projects | Reputera',
+  title: 'Our Work — What We Build & What It Achieves | Reputera',
   description:
-    'A sample of what Reputera has built — ERP systems, AI-powered features and field-ready apps, shown by industry rather than by client name.',
+    'See what Reputera builds and the results it drives — custom software, apps, websites, and AI that save time, cut costs, and grow businesses.',
   path: '/portfolio',
 });
 
@@ -17,72 +23,122 @@ export default function PortfolioPage() {
   return (
     <>
       <JsonLd
-        data={breadcrumbSchema([
+        data={[
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Work', path: '/portfolio' },
+          ]),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'Reputera work',
+            url: `${site.url}/portfolio`,
+            description:
+              'What Reputera builds and the results it drives — custom software, apps, websites, and AI.',
+            isPartOf: { '@id': `${site.url}/#website` },
+            hasPart: caseStudies.map((study) => ({
+              '@type': 'CreativeWork',
+              name: study.title,
+              description: study.copy,
+              about: study.niche,
+              keywords: study.tags.join(', '),
+              creator: { '@id': `${site.url}/#organization` },
+            })),
+          },
+        ]}
+      />
+
+      <Breadcrumbs
+        trail={[
           { name: 'Home', path: '/' },
-          { name: 'Portfolio', path: '/portfolio' },
-        ])}
+          { name: 'Work', path: '/portfolio' },
+        ]}
       />
 
       <PageHero
-        eyebrow="Selected work"
+        eyebrow="Our work"
         title={
           <>
-            Real work, <span className="text-gradient">real businesses</span>.
+            Work that earns its place in a <span className="text-gradient">business</span>.
           </>
         }
-        intro="A sample of what we've built — shown by industry, not by name. Much of this runs inside businesses that would rather not publicise their internal systems, so the story is here and the logo is not."
-        actions={[{ label: 'Start Your Demo', href: '/get-a-demo' }]}
+        intro="We don't build software to sit in a portfolio — we build it to do a job. Here's what each kind of build actually achieves for the businesses we work with, and a look at some of the real projects behind it."
+        actions={[
+          {
+            label: (
+              <>
+                Start Your Demo <span aria-hidden="true">→</span>
+              </>
+            ),
+            href: '/get-a-demo',
+          },
+        ]}
       />
 
-      <section className="section" aria-labelledby="work-title">
-        <div className="container">
-          <h2 id="work-title" className="visually-hidden">
-            Case studies by industry
-          </h2>
+      {workSections.map((section, sectionIndex) => (
+        <section
+          key={section.id}
+          id={section.id}
+          className={`${styles.section} ${sectionIndex % 2 === 1 ? styles.sectionAlt : ''}`}
+          aria-labelledby={`${section.id}-title`}
+        >
+          <div className="container">
+            <div className="section-head">
+              <p className={`eyebrow ${section.accent === 'amber' ? 'eyebrow-amber' : ''}`}>
+                {section.eyebrow}
+              </p>
+              <h2 id={`${section.id}-title`}>{section.heading}</h2>
+              <p>{section.intro}</p>
+            </div>
 
-          <div className={styles.list}>
-            {caseStudies.map((study, index) => (
-              <article
-                key={study.slug}
-                id={study.slug}
-                className={`reveal ${styles.item}`}
-                data-reveal-index={index}
-                aria-labelledby={`${study.slug}-title`}
-              >
-                <div className={styles.itemHead}>
-                  <p className={styles.niche}>{study.niche}</p>
+            <ul className={`${styles.outcomes} ${section.accent === 'amber' ? styles.amber : ''}`}>
+              {section.outcomes.map((outcome, index) => (
+                <li key={outcome.title} className="reveal" data-reveal-index={index}>
+                  <span className={styles.outcomeIcon}>
+                    <OutcomeIcon name={outcome.icon} />
+                  </span>
+                  <div>
+                    <strong>{outcome.title}</strong>
+                    <span>{outcome.body}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            {section.proof && (
+              <article className={`reveal ${styles.proof} ${section.accent === 'amber' ? styles.amber : ''}`}>
+                <div className={styles.proofVisual}>
+                  <CaseVisual slug={section.proof.caseSlug} />
+                </div>
+                <div className={styles.proofCopy}>
+                  <p className={styles.proofLabel}>Proof · {section.proof.niche}</p>
+                  <h3>{section.proof.title}</h3>
+                  <p>{section.proof.copy}</p>
                   <ul className="pill-list">
-                    {study.tags.map((tag) => (
+                    {section.proof.tags.map((tag) => (
                       <li key={tag}>
                         <span className="pill">{tag}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
-                <h3 id={`${study.slug}-title`} className={styles.title}>
-                  {study.title}
-                </h3>
-                <p className={styles.copy}>{study.copy}</p>
               </article>
-            ))}
-          </div>
-        </div>
-      </section>
+            )}
 
-      <section className="section section-divider" aria-labelledby="nda-title">
-        <div className="container container-narrow">
-          <h2 id="nda-title">Want to see something closer to your business?</h2>
-          <p className="lead" style={{ marginTop: '1rem' }}>
-            We can walk you through relevant work in more detail on a call — and if you would rather see
-            your own idea than someone else&apos;s, the demo request is the faster route.
-          </p>
-        </div>
-      </section>
+            {section.note && <p className={styles.note}>{section.note}</p>}
+
+            <div className={`btn-row ${styles.sectionCta}`}>
+              <Link href={section.service.href} className="btn btn-ghost">
+                Explore {section.service.label} <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      ))}
 
       <CtaBand
-        title="See your own idea instead."
-        body="Describe what you want built and we will send back a visual demo of it within 24–72 hours — designed around your business, not adapted from someone else's."
+        title="Let's build something that earns its place."
+        body="Tell us what you're trying to achieve. We'll come back with a real, visual demo in 24–72 hours — proof, before you commit to anything."
       />
     </>
   );

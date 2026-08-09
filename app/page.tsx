@@ -179,28 +179,22 @@ export default function HomePage() {
                 Founders
               </h2>
               <p className={styles.aboutCopy}>
-                Reputera is built by <strong>Ayaan Shah</strong> and <strong>Shahid Khan</strong>, who
-                started the company to build software the way it should be built: shaped around how a
-                business actually runs, and delivered by the people who actually build it — hands-on with
-                every project, start to finish.
+                Reputera was founded by <strong>Ayaan Shah</strong> on a simple belief: software should fit
+                the business, not the other way around. No layers, no account managers relaying messages —
+                you work directly with the person building your solution.
               </p>
 
               <ul className={styles.founderList}>
-                {[
-                  { name: 'Ayaan Shah', initials: 'AS' },
-                  { name: 'Shahid Khan', initials: 'SK' },
-                ].map((founder) => (
-                  <li key={founder.name}>
-                    {/* TODO(brand): swap the initials disc for a photo when available. */}
-                    <span className={styles.founderAvatar} aria-hidden="true">
-                      {founder.initials}
-                    </span>
-                    <span>
-                      <strong>{founder.name}</strong>
-                      <em>Co-founder</em>
-                    </span>
-                  </li>
-                ))}
+                <li>
+                  {/* TODO(brand): swap the initials disc for a photo when available. */}
+                  <span className={styles.founderAvatar} aria-hidden="true">
+                    AS
+                  </span>
+                  <span>
+                    <strong>Ayaan Shah</strong>
+                    <em>Founder</em>
+                  </span>
+                </li>
               </ul>
 
               <div className="btn-row" style={{ marginTop: '1.75rem' }}>

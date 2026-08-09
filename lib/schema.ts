@@ -15,10 +15,7 @@ export const organizationSchema = () => ({
   email: site.email,
   telephone: site.phone,
   areaServed: 'Worldwide',
-  founder: [
-    { '@type': 'Person', name: 'Ayaan Shah' },
-    { '@type': 'Person', name: 'Shahid Khan' },
-  ],
+  founder: { '@type': 'Person', name: 'Ayaan Shah' },
   knowsAbout: [
     'Custom software development',
     'Mobile app development',

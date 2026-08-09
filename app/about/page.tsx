@@ -8,16 +8,11 @@ import { site } from '@/lib/site';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
-  title: 'About Reputera — Founders, Values & How We Work',
+  title: 'About Reputera — Software Built Around Your Business',
   description:
-    'Reputera builds custom software, apps, websites and AI around each client\'s workflow logic. Founded by Ayaan Shah and Shahid Khan. Where ideas earn their reputation.',
+    'Reputera is a software studio founded by Ayaan Shah, building custom software, apps, websites, and AI around how each business actually works.',
   path: '/about',
 });
-
-const founders = [
-  { name: 'Ayaan Shah', role: 'Co-founder', initials: 'AS' },
-  { name: 'Shahid Khan', role: 'Co-founder', initials: 'SK' },
-];
 
 const values = [
   {
@@ -89,10 +84,20 @@ export default function AboutPage() {
         eyebrow="About us"
         title={
           <>
-            A software company built on a <span className="text-gradient">simple promise</span>.
+            Software, built around <span className="text-gradient">your business</span>.
           </>
         }
-        intro="Reputera exists because too much software is sold before it is shown. We flipped that: describe your idea and we will put a visual demo of it in front of you within 24–72 hours, then build it properly if you like what you see."
+        intro="Reputera was founded by Ayaan Shah on a simple belief: software should fit the business, not the other way around."
+        actions={[
+          {
+            label: (
+              <>
+                Start Your Demo <span aria-hidden="true">→</span>
+              </>
+            ),
+            href: '/get-a-demo',
+          },
+        ]}
       />
 
       {/* ---------------------------------------------------------------- story */}
@@ -102,20 +107,27 @@ export default function AboutPage() {
             <div className={styles.story}>
               <h2 id="story-title">Where ideas earn their reputation.</h2>
               <p>
-                Every business we meet has a way of working that took years to settle into shape — the
-                sequence, the exceptions, the judgement calls, the spreadsheet somebody built once that the
-                whole operation now quietly depends on. Generic software ignores all of it and asks you to
-                adapt.
+                Too many companies are forced to bend their process around rigid, off-the-shelf tools.
+                Reputera exists to flip that — building custom software, apps, websites, and AI around how
+                each business actually runs, and staying hands-on with every project from first idea to
+                final handover.
               </p>
               <p>
-                We build the other way round. We learn the logic first, then encode it. That is the whole
-                difference between software you tolerate and software your team actually reaches for.
+                No layers, no account managers relaying messages — you work directly with the person
+                building your solution.
               </p>
-              <p>
-                The second half of our name is deliberate. Reputation is what a business runs on, and it is
-                built from small things done properly and repeatedly. It applies to the software we hand
-                over, and it applies to how we behave while building it.
-              </p>
+
+              <div className={styles.founderRow}>
+                {/* TODO(brand): swap the initials disc for a photo when available. */}
+                <span className={styles.avatar} aria-hidden="true">
+                  AS
+                </span>
+                <span>
+                  <strong>Ayaan Shah</strong>
+                  <em>Founder</em>
+                </span>
+              </div>
+
               <p className={styles.motto}>{site.supportingTagline}</p>
             </div>
 
@@ -143,41 +155,11 @@ export default function AboutPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt>Founded by</dt>
-                  <dd>Ayaan Shah &amp; Shahid Khan</dd>
+                  <dt>Founder</dt>
+                  <dd>Ayaan Shah</dd>
                 </div>
               </dl>
             </aside>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------- founders */}
-      <section className="section section-divider" aria-labelledby="founders-title">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow">The founders</p>
-            <h2 id="founders-title">Two people who answer for the work.</h2>
-            <p>
-              Reputera is built by Ayaan Shah and Shahid Khan, who started the company to build software the
-              way it should be built: shaped around how a business actually runs, and delivered by the people
-              who actually build it — hands-on with every project, start to finish.
-            </p>
-          </div>
-
-          <div className="grid grid-2">
-            {founders.map((founder, index) => (
-              <article key={founder.name} className={`card reveal ${styles.founder}`} data-reveal-index={index}>
-                {/* TODO(brand): swap for a photo when available. */}
-                <span className={styles.avatar} aria-hidden="true">
-                  {founder.initials}
-                </span>
-                <div>
-                  <h3>{founder.name}</h3>
-                  <p className={styles.role}>{founder.role}</p>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>

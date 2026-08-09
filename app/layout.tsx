@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: 'Ayaan Shah' }, { name: 'Shahid Khan' }],
+  authors: [{ name: 'Ayaan Shah' }],
   creator: site.name,
   publisher: site.name,
   keywords: [

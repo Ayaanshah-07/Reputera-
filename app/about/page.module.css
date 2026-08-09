@@ -52,16 +52,31 @@
   color: var(--text);
 }
 
-/* ------------------------------------------------------------- founders --- */
+/* -------------------------------------------------------------- founder --- */
 
-.founder {
+.founderRow {
   display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--line);
 }
 
-.founder p {
-  color: var(--text-muted);
+.founderRow strong {
+  display: block;
+  color: var(--text-bright);
+  font-weight: 600;
+}
+
+.founderRow em {
+  display: block;
+  margin-top: 0.15rem;
+  font-style: normal;
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
 }
 
 /* Placeholder avatar — replace with a photo when one is supplied. */
