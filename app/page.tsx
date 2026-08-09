@@ -137,23 +137,30 @@ export default function HomePage() {
       </section>
 
       {/* -------------------------------------------------------------- product */}
-      <section className="section section-divider" aria-labelledby="product-title">
+      <section className={styles.reviewsSection} aria-labelledby="product-title">
         <div className="container">
           <div className={styles.reviewsCard}>
-            <div>
+            <div className={styles.reviewsCopy}>
               <p className="eyebrow eyebrow-amber">Coming soon</p>
-              <h2 id="product-title">Reputera Reviews</h2>
-              <p className="lead">
+              <h2 id="product-title" className={styles.reviewsHeading}>
+                Reputera <span className="text-amber">Reviews</span>
+              </h2>
+              <p className={styles.reviewsLead}>
                 A subscription tool for managing and growing your Google reviews — turning happy customers
                 into a reputation that markets you. Details coming soon.
               </p>
-              <div className="btn-row" style={{ marginTop: '1.75rem' }}>
-                <Link href="/reviews" className="btn btn-ghost">
+              <p className={styles.reviewsMotto}>
+                From the software we build to the reputation you keep.
+              </p>
+              <div className="btn-row" style={{ marginTop: '2rem' }}>
+                <Link href="/reviews" className="btn btn-amber btn-lg">
                   Join the waitlist <span aria-hidden="true">→</span>
                 </Link>
               </div>
             </div>
-            <ReviewsVisual />
+            <div className={styles.reviewsVisual}>
+              <ReviewsVisual />
+            </div>
           </div>
         </div>
       </section>

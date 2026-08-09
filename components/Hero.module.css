@@ -66,39 +66,6 @@
   animation: fadeIn 1000ms 260ms both;
 }
 
-/* --------------------------------------------------------------- proof --- */
-
-.proof {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin: clamp(2rem, 3.5vw, 2.75rem) 0 0;
-  animation: fadeUp 900ms 420ms both;
-}
-
-.proofItem {
-  padding: 0.85rem 0.9rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: rgba(10, 16, 36, 0.6);
-  backdrop-filter: blur(8px);
-}
-
-.proofValue {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--step-1);
-  font-weight: 600;
-  color: var(--text-bright);
-  letter-spacing: -0.03em;
-}
-
-.proofLabel {
-  margin: 0.2rem 0 0;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  line-height: 1.35;
-}
-
 /* ------------------------------------------- Reputera Reviews banner --- */
 
 .bannerWrap {
@@ -221,7 +188,6 @@
   .title,
   .lead,
   .actions,
-  .proof,
   .visual,
   .reviewsBanner {
     animation: none;

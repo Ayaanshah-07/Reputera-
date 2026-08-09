@@ -194,16 +194,56 @@
 
 /* ----------------------------------------------------------- reviews --- */
 
+/* Full-width band so the product side reads as its own destination, not a
+   footnote to the agency work. */
+.reviewsSection {
+  position: relative;
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+  border-block: 1px solid rgba(245, 185, 66, 0.18);
+  background:
+    radial-gradient(900px 420px at 82% 0%, rgba(245, 185, 66, 0.16), transparent 62%),
+    radial-gradient(700px 380px at 8% 100%, rgba(34, 211, 238, 0.08), transparent 60%),
+    rgba(4, 7, 15, 0.5);
+}
+
 .reviewsCard {
   display: grid;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
-  padding: clamp(1.75rem, 4vw, 3rem);
-  border: 1px solid rgba(245, 185, 66, 0.22);
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(600px 300px at 100% 0%, rgba(245, 185, 66, 0.13), transparent 62%),
-    rgba(10, 16, 36, 0.6);
+}
+
+.reviewsCopy {
+  min-width: 0;
+}
+
+.reviewsHeading {
+  font-size: var(--step-4);
+  letter-spacing: -0.035em;
+}
+
+.reviewsLead {
+  margin-top: 1.1rem;
+  font-size: var(--step-1);
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+.reviewsMotto {
+  margin-top: 1.5rem;
+  padding-left: 1.15rem;
+  border-left: 2px solid var(--amber-400);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--step-1);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text-bright);
+  max-width: 34ch;
+}
+
+.reviewsVisual {
+  min-width: 0;
+  transform: scale(1.06);
 }
 
 
@@ -218,6 +258,6 @@
   }
 
   .reviewsCard {
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   }
 }

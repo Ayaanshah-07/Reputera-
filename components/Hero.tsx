@@ -3,12 +3,6 @@ import AnimatedBackground from './AnimatedBackground';
 import HeroVisual from './HeroVisual';
 import styles from './Hero.module.css';
 
-const stats = [
-  { value: '24–72hrs', label: 'demo turnaround' },
-  { value: '4', label: 'build types, one team' },
-  { value: '0', label: 'templates used' },
-];
-
 export default function Hero() {
   return (
     <section className={styles.hero}>
@@ -38,15 +32,6 @@ export default function Hero() {
               See what we build
             </Link>
           </div>
-
-          <dl className={styles.proof}>
-            {stats.map((stat) => (
-              <div key={stat.label} className={styles.proofItem}>
-                <dt className={styles.proofValue}>{stat.value}</dt>
-                <dd className={styles.proofLabel}>{stat.label}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         <div className={styles.visual}>
