@@ -23,20 +23,48 @@ const values = [
   {
     title: 'Show the work',
     body: 'A demo before a contract. It is a harder standard to hold ourselves to, and it is the fastest way for someone to know whether we are any good.',
+    icon: (
+      <>
+        <rect x="2.5" y="4" width="19" height="13" rx="2.5" />
+        <path d="M12 17v3M8.5 20h7" />
+        <path d="m9.5 8.5 4.5 2.5-4.5 2.5V8.5Z" />
+      </>
+    ),
   },
   {
     title: 'No templates',
-    body: 'Reusing our own components is engineering. Reusing someone else\'s product and calling it custom is not. We do the former and refuse the latter.',
+    body: "Reusing our own components is engineering. Reusing someone else's product and calling it custom is not. We do the former and refuse the latter.",
+    icon: (
+      <>
+        <rect x="3" y="3" width="7" height="7" rx="1.6" />
+        <rect x="14" y="3" width="7" height="7" rx="1.6" />
+        <rect x="3" y="14" width="7" height="7" rx="1.6" />
+        <path d="M14.5 17.5h6M17.5 14.5v6" />
+      </>
+    ),
   },
   {
     title: 'Plain language',
     body: 'You should never need a translator to understand what we are building, what it costs, or what is going wrong when something does.',
+    icon: (
+      <>
+        <path d="M20.5 12.5a7.5 7.5 0 0 1-7.5 7.5H8l-4 3v-4.4A7.5 7.5 0 0 1 8.5 5h4.5a7.5 7.5 0 0 1 7.5 7.5Z" />
+        <path d="M9 11h7M9 14.5h4.5" />
+      </>
+    ),
   },
   {
     title: 'Earn it every time',
     body: 'A reputation is not a launch asset, it is a running total. Every project either adds to it or takes from it — ours and yours.',
+    icon: (
+      <>
+        <path d="M3.5 17.5 9 12l3.5 3.5L20.5 7" />
+        <path d="M15.5 7h5v5" />
+      </>
+    ),
   },
 ];
+
 
 export default function AboutPage() {
   return (
@@ -155,16 +183,37 @@ export default function AboutPage() {
       </section>
 
       {/* --------------------------------------------------------------- values */}
-      <section className="section" aria-labelledby="values-title">
+      <section className={styles.valuesSection} aria-labelledby="values-title">
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">What we hold to</p>
             <h2 id="values-title">Four things we will not trade away.</h2>
           </div>
 
-          <div className="grid grid-2">
+          <div className={styles.values}>
             {values.map((value, index) => (
-              <article key={value.title} className="card card-hover reveal" data-reveal-index={index}>
+              <article
+                key={value.title}
+                className={`reveal ${styles.value} ${index % 2 === 1 ? styles.valueAmber : ''}`}
+                data-reveal-index={index}
+              >
+                <span className={styles.valueNum} aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+
+                <span className={styles.valueIcon} aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {value.icon}
+                  </svg>
+                </span>
+
                 <h3>{value.title}</h3>
                 <p>{value.body}</p>
               </article>
