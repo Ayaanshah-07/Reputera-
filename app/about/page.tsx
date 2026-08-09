@@ -107,16 +107,28 @@ export default function AboutPage() {
             <div className={styles.story}>
               <h2 id="story-title">Where ideas earn their reputation.</h2>
               <p>
-                Too many companies are forced to bend their process around rigid, off-the-shelf tools.
-                Reputera exists to flip that — building custom software, apps, websites, and AI around how
-                each business actually runs, and staying hands-on with every project from first idea to
-                final handover.
+                Every business we meet has a way of working that took years to settle into shape — the
+                sequence, the exceptions, the judgement calls, the spreadsheet somebody built once that the
+                whole operation now quietly depends on. Generic software ignores all of it and asks you to
+                adapt.
+              </p>
+              <p>
+                We build the other way round. We learn the logic first, then encode it. That is the whole
+                difference between software you tolerate and software your team actually reaches for.
               </p>
               <p>
                 No layers, no account managers relaying messages — you work directly with the person
                 building your solution.
               </p>
+              <p>
+                The second half of our name is deliberate. Reputation is what a business runs on, and it is
+                built from small things done properly and repeatedly. It applies to the software we hand
+                over, and it applies to how we behave while building it.
+              </p>
 
+              <p className={styles.motto}>{site.supportingTagline}</p>
+
+              {/* Reads as a sign-off, so it sits last. */}
               <div className={styles.founderRow}>
                 {/* TODO(brand): swap the initials disc for a photo when available. */}
                 <span className={styles.avatar} aria-hidden="true">
@@ -127,8 +139,6 @@ export default function AboutPage() {
                   <em>Founder</em>
                 </span>
               </div>
-
-              <p className={styles.motto}>{site.supportingTagline}</p>
             </div>
 
             <aside className={styles.factCard} aria-label="Reputera at a glance">
