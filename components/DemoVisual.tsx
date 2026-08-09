@@ -1,8 +1,10 @@
 import styles from './DemoVisual.module.css';
 
 /**
- * "Brief in, screens out" artwork for the Get a Demo section: a stack of mock
- * demo screens behind the turnaround promise. Decorative.
+ * "Brief in, screens out" artwork for the Get a Demo section: a stack of demo
+ * screens with the turnaround promise beneath. The front screen carries real
+ * labels so it reads as a product mockup rather than placeholder blocks.
+ * Decorative — the section's own copy carries the meaning.
  */
 export default function DemoVisual() {
   return (
@@ -10,15 +12,39 @@ export default function DemoVisual() {
       <div className={styles.stack}>
         <div className={`${styles.screen} ${styles.screenBack}`} />
         <div className={`${styles.screen} ${styles.screenMid}`} />
+
         <div className={`${styles.screen} ${styles.screenFront}`}>
-          <span className={styles.bar} />
-          <div className={styles.blocks}>
-            <span className={styles.block} />
-            <span className={styles.block} />
+          <div className={styles.head}>
+            <span className={styles.dots}>
+              <i />
+              <i />
+              <i />
+            </span>
+            <span className={styles.headTitle}>Your demo</span>
+            <span className={styles.ready}>Ready</span>
           </div>
-          <span className={styles.line} />
-          <span className={`${styles.line} ${styles.lineShort}`} />
-          <span className={styles.cta} />
+
+          <div className={styles.body}>
+            <p className={styles.screenTitle}>Bookings</p>
+
+            <div className={styles.tiles}>
+              <div className={styles.tile}>
+                <b>24</b>
+                <span>Today</span>
+              </div>
+              <div className={`${styles.tile} ${styles.tileAmber}`}>
+                <b>8</b>
+                <span>Open</span>
+              </div>
+            </div>
+
+            <p className={styles.rowItem}>
+              <span className={styles.rowDot} />
+              New request · 09:40
+            </p>
+
+            <span className={styles.button}>Approve</span>
+          </div>
         </div>
       </div>
 
