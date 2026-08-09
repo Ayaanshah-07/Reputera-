@@ -213,9 +213,10 @@
   inset: 4.5rem 0 0;
   z-index: 99;
   padding-block: var(--space-lg) var(--space-xl);
-  background: rgba(7, 11, 24, 0.98);
-  backdrop-filter: blur(20px);
+  /* Fully opaque — at 98% the page copy behind it still showed through. */
+  background: var(--navy-900);
   overflow-y: auto;
+  overscroll-behavior: contain;
   opacity: 0;
   transition: opacity var(--transition);
 }

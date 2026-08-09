@@ -55,7 +55,8 @@ export default function Nav() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.bar}`}>
         <Logo />
 
@@ -126,7 +127,14 @@ export default function Nav() {
           </button>
         </div>
       </div>
+      </header>
 
+      {/*
+        Rendered as a sibling of <header>, not inside it. The scrolled header
+        applies backdrop-filter, which makes it a containing block for
+        position: fixed descendants — nested here, the menu sized itself against
+        the 73px header instead of the viewport and collapsed to a sliver.
+      */}
       <div id="mobile-menu" className={`${styles.mobileMenu} ${open ? styles.mobileOpen : ''}`} hidden={!open}>
         <nav className="container" aria-label="Mobile">
           <ul className={styles.mobileList}>
@@ -155,6 +163,6 @@ export default function Nav() {
           <p className={styles.mobileNote}>A visual demo of your idea in 24–72 hours.</p>
         </nav>
       </div>
-    </header>
+    </>
   );
 }
