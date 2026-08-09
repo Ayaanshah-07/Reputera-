@@ -75,15 +75,16 @@ Set these in `.env.local` locally and in your host's environment variables in pr
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | **Yes, before launch** | Canonical URLs, sitemap, robots, OG image URLs. No trailing slash. |
 | `LEAD_WEBHOOK_URL` | One of these two | POSTs each submission as JSON (Zapier, Make, n8n, Slack, CRM). |
-| `RESEND_API_KEY` + `LEAD_EMAIL_TO` + `LEAD_EMAIL_FROM` | One of these two | Emails each submission via [Resend](https://resend.com). |
+| `RESEND_API_KEY` + `LEAD_EMAIL_FROM` | One of these two | Emails each submission via [Resend](https://resend.com). Mail goes to `info@reputera.in` (the `site.email` value); set `LEAD_EMAIL_TO` only to route it elsewhere. |
 
 > **Important:** with no delivery channel configured, the three forms still validate and return success
 > to the visitor, but the submission is only written to the server log with a loud warning — it is not
 > delivered anywhere. Configure at least one channel before you send traffic to the site.
 
 Brand details that are not secrets — email address, phone number, social handle — live in the `site`
-object at the top of `lib/site.ts`. **The phone number and email there are placeholders; replace them
-before launch.**
+object at the top of `lib/site.ts`. Every form delivers to `site.email` (`info@reputera.in`) and every
+"email us" link points at it, so changing it there changes it everywhere. **The phone number is still a
+placeholder; replace it before launch.**
 
 ---
 
@@ -134,6 +135,6 @@ failed fields, keyboard-operable nav and accordions, and every animation disable
 - **Logo** — the nav and footer use a placeholder mark in `components/Logo.tsx`. Drop the real asset in
   `/public` and follow the `TODO(brand)` comment in that file; sizing and layout are already in place.
 - **Founder photos** — `app/about/page.tsx` uses initials avatars, marked with a `TODO(brand)` comment.
-- **Real contact details** — replace the placeholder email and phone in `lib/site.ts`.
+- **Real phone number** — the placeholder in `lib/site.ts` still needs replacing.
 - **Case-study specifics** — `lib/industries.ts` is written from the brief; confirm the details match
   real projects before launch.

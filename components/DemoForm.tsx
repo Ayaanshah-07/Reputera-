@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { budgetRanges, buildOptions, niches } from '@/lib/site';
+import { budgetRanges, buildOptions, niches, site } from '@/lib/site';
 import styles from './DemoForm.module.css';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
@@ -107,7 +107,7 @@ export default function DemoForm() {
     } catch {
       setStatus('error');
       setMessage(
-        'Something went wrong sending that. Please email hello@reputera.com and we will pick it up straight away.',
+        `Something went wrong sending that. Please email ${site.email} and we will pick it up straight away.`,
       );
     }
   };

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './DemoForm.module.css';
+import { site } from '@/lib/site';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -63,7 +64,7 @@ export default function ContactForm() {
       setMessage(data.message || '');
     } catch {
       setStatus('error');
-      setMessage('That did not send. Please email hello@reputera.com directly and we will pick it up.');
+      setMessage(`That did not send. Please email ${site.email} directly and we will pick it up.`);
     }
   };
 

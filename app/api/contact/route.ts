@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { clientKey, deliverLead, rateLimit } from '@/lib/leads';
+import { site } from '@/lib/site';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -23,7 +24,7 @@ export async function POST(request: Request) {
 
   if (!rateLimit(`contact:${clientKey(request)}`).allowed) {
     return NextResponse.json(
-      { message: 'Too many messages in a short window. Email hello@reputera.com and we will help directly.' },
+      { message: `Too many messages in a short window. Email ${site.email} and we will help directly.` },
       { status: 429 },
     );
   }

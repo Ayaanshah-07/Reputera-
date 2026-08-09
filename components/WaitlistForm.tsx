@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './WaitlistForm.module.css';
+import { site } from '@/lib/site';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -45,7 +46,7 @@ export default function WaitlistForm() {
       setMessage(data.message || '');
     } catch {
       setStatus('error');
-      setError('That did not send. Email hello@reputera.com and we will add you manually.');
+      setError(`That did not send. Email ${site.email} and we will add you manually.`);
     }
   };
 

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { budgetRanges, buildOptions } from '@/lib/site';
+import { budgetRanges, buildOptions, site } from '@/lib/site';
 import { clientKey, deliverLead, rateLimit } from '@/lib/leads';
 
 export const runtime = 'nodejs';
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
   if (!rateLimit(`demo:${clientKey(request)}`).allowed) {
     return NextResponse.json(
-      { message: 'That is a few requests in a short time. Email hello@reputera.com and we will help directly.' },
+      { message: `That is a few requests in a short time. Email ${site.email} and we will help directly.` },
       { status: 429 },
     );
   }

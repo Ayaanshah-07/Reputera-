@@ -5,12 +5,16 @@
  * when one of these is set (see README):
  *
  *   LEAD_WEBHOOK_URL   POST the lead as JSON — Zapier, Make, Slack, n8n, CRM…
- *   RESEND_API_KEY + LEAD_EMAIL_TO + LEAD_EMAIL_FROM   email the lead
+ *   RESEND_API_KEY + LEAD_EMAIL_FROM   email the lead
+ *
+ * Email goes to site.email (info@reputera.in) unless LEAD_EMAIL_TO overrides it.
  *
  * With neither configured we log loudly and still return success to the
  * visitor, so a missing env var never shows them a broken form. Configure at
  * least one before going live or submissions go nowhere.
  */
+
+import { site } from './site';
 
 export type Lead = {
   type: 'demo-request' | 'contact' | 'reviews-waitlist';
@@ -24,7 +28,8 @@ export async function deliverLead(lead: Lead): Promise<DeliveryResult> {
   const channels: string[] = [];
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
   const resendKey = process.env.RESEND_API_KEY;
-  const to = process.env.LEAD_EMAIL_TO;
+  // Every form lands in the brand inbox unless an env var redirects it.
+  const to = process.env.LEAD_EMAIL_TO || site.email;
   const from = process.env.LEAD_EMAIL_FROM;
 
   if (webhookUrl) {
@@ -67,7 +72,7 @@ export async function deliverLead(lead: Lead): Promise<DeliveryResult> {
   if (channels.length === 0) {
     console.warn(
       `[leads] NO DELIVERY CHANNEL CONFIGURED — this ${lead.type} was not sent anywhere. ` +
-        'Set LEAD_WEBHOOK_URL or RESEND_API_KEY + LEAD_EMAIL_TO + LEAD_EMAIL_FROM.',
+        'Set LEAD_WEBHOOK_URL, or RESEND_API_KEY + LEAD_EMAIL_FROM.',
     );
     console.warn(asPlainText(lead));
   }

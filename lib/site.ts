@@ -12,8 +12,8 @@ export const site = {
   description:
     'Reputera builds custom software, apps, websites, and AI solutions engineered around how your business actually runs. Get a working demo in 24–72 hours.',
   // Override in production with NEXT_PUBLIC_SITE_URL (Vercel/Netlify env var).
-  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://reputera.com').replace(/\/$/, ''),
-  email: 'hello@reputera.com',
+  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://reputera.in').replace(/\/$/, ''),
+  email: 'info@reputera.in',
   phone: '+1 (000) 000-0000',
   locale: 'en_US',
   twitter: '@reputera',
