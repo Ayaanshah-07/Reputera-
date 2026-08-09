@@ -277,6 +277,26 @@ ol {
   color: transparent;
 }
 
+/*
+ * Section headings get a soft top-down fade instead of flat white, which reads
+ * as designed without shouting. Applied only inside @supports and only after a
+ * solid colour is already set, so an unsupporting browser keeps visible text.
+ */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .section-head h2,
+  .heading-fade {
+    background-image: linear-gradient(172deg, var(--text-bright) 38%, rgba(147, 163, 190, 0.78) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Small accent rule above a section heading, paired with the eyebrow. */
+.section-head h2 {
+  position: relative;
+}
+
 .text-cyan { color: var(--cyan-400); }
 .text-amber { color: var(--amber-400); }
 

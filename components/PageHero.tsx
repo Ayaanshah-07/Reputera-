@@ -17,7 +17,7 @@ export default function PageHero({ eyebrow, title, intro, accent = 'cyan', actio
       <div className={styles.glow} aria-hidden="true" />
       <div className="container">
         <p className={`eyebrow ${accent === 'amber' ? 'eyebrow-amber' : ''}`}>{eyebrow}</p>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={`heading-fade ${styles.title}`}>{title}</h1>
         <p className={`lead ${styles.intro}`}>{intro}</p>
         {actions && actions.length > 0 && (
           <div className={`btn-row ${styles.actions}`}>

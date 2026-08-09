@@ -2,6 +2,7 @@ import PageHero from '@/components/PageHero';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ServiceCard from '@/components/ServiceCard';
 import CtaBand from '@/components/CtaBand';
+import PointCard from '@/components/PointCard';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
@@ -171,10 +172,7 @@ export default function ServicesPage() {
 
           <div className="grid grid-2">
             {why.map((point, index) => (
-              <article key={point.title} className="card card-hover reveal" data-reveal-index={index}>
-                <h3>{point.title}</h3>
-                <p>{point.body}</p>
-              </article>
+              <PointCard key={point.title} index={index} title={point.title} body={point.body} />
             ))}
           </div>
         </div>

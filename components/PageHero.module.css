@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3.25rem);
   overflow: hidden;
 }
 
@@ -11,12 +11,30 @@
   translate: -50% 0;
   width: min(1100px, 130vw);
   aspect-ratio: 2 / 1;
-  background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.16), transparent 62%);
+  /* Sized in percentages so each gradient fades out inside the box — an
+     unbounded `ellipse` reaches the edge and shows as a hard rectangle. */
+  background:
+    radial-gradient(46% 62% at 36% 46%, rgba(34, 211, 238, 0.2), transparent 72%),
+    radial-gradient(38% 54% at 74% 60%, rgba(245, 185, 66, 0.12), transparent 72%);
   pointer-events: none;
+  animation: drift 18s ease-in-out infinite;
 }
 
 .amber .glow {
-  background: radial-gradient(ellipse at center, rgba(245, 185, 66, 0.15), transparent 62%);
+  background:
+    radial-gradient(46% 62% at 36% 46%, rgba(245, 185, 66, 0.19), transparent 72%),
+    radial-gradient(38% 54% at 74% 60%, rgba(34, 211, 238, 0.1), transparent 72%);
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-3%, 2%, 0) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow {
+    animation: none;
+  }
 }
 
 .hero::after {
@@ -29,7 +47,9 @@
 }
 
 .title {
+  position: relative;
   max-width: 18ch;
+  font-size: clamp(2.15rem, 1.5rem + 2.9vw, 3.6rem);
 }
 
 .intro {

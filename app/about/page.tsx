@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import CtaBand from '@/components/CtaBand';
+import PointCard from '@/components/PointCard';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
@@ -184,31 +185,13 @@ export default function AboutPage() {
 
           <div className={styles.values}>
             {values.map((value, index) => (
-              <article
+              <PointCard
                 key={value.title}
-                className={`reveal ${styles.value} ${index % 2 === 1 ? styles.valueAmber : ''}`}
-                data-reveal-index={index}
-              >
-                <span className={styles.valueNum} aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-
-                <span className={styles.valueIcon} aria-hidden="true">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {value.icon}
-                  </svg>
-                </span>
-
-                <h3>{value.title}</h3>
-                <p>{value.body}</p>
-              </article>
+                index={index}
+                title={value.title}
+                body={value.body}
+                icon={value.icon}
+              />
             ))}
           </div>
         </div>

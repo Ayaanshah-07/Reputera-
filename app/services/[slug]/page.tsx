@@ -4,11 +4,13 @@ import PageHero from '@/components/PageHero';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ServiceIcon from '@/components/ServiceIcon';
 import CtaBand from '@/components/CtaBand';
+import PointCard from '@/components/PointCard';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
 import { getService, services } from '@/lib/site';
+import { highlight } from '@/lib/highlight';
 import { caseStudies } from '@/lib/industries';
 import styles from './page.module.css';
 
@@ -81,7 +83,7 @@ export default async function ServicePage({ params }: Params) {
 
       <PageHero
         eyebrow={service.flagship ? 'Flagship service' : 'Service'}
-        title={service.heading}
+        title={highlight(service.heading, service.headingAccent)}
         intro={service.intro}
         accent={service.accent}
         actions={[
@@ -180,10 +182,7 @@ export default async function ServicePage({ params }: Params) {
 
             <div className="grid grid-3">
               {service.why.points.map((point, index) => (
-                <article key={point.title} className="card card-hover reveal" data-reveal-index={index}>
-                  <h3>{point.title}</h3>
-                  <p>{point.body}</p>
-                </article>
+                <PointCard key={point.title} index={index} title={point.title} body={point.body} />
               ))}
             </div>
           </div>

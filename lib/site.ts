@@ -54,6 +54,8 @@ export type Service = {
   title: string;
   /** H1 on the service page. */
   heading: string;
+  /** Substring of `heading` rendered in the accent gradient. */
+  headingAccent?: string;
   metaTitle: string;
   metaDescription: string;
   /** schema.org serviceType. Defaults to `title` when the two match. */
@@ -96,7 +98,8 @@ export const services: Service[] = [
   {
     slug: 'software-development',
     title: 'Software Development',
-    heading: 'Custom software, built around your business — not a template.',
+    heading: 'Software, built around your business — not a template.',
+    headingAccent: 'your business',
     metaTitle: 'Custom Software Development Company | Reputera',
     metaDescription:
       'Reputera builds custom software around your exact business logic — ERP systems, internal tools, workflow automation, and AI features. See a demo in 24–72 hrs.',
@@ -203,6 +206,7 @@ export const services: Service[] = [
     slug: 'app-development',
     title: 'App Development',
     heading: 'Apps built for how your people actually work.',
+    headingAccent: 'actually work',
     metaTitle: 'Custom App Development Company | Reputera',
     metaDescription:
       'Reputera builds custom mobile and web apps around how your business works — for your team or your customers. See a working demo in 24–72 hours.',
@@ -308,6 +312,7 @@ export const services: Service[] = [
     slug: 'website-development',
     title: 'Website Development',
     heading: 'Websites that work as hard as you do.',
+    headingAccent: 'as hard as you do',
     metaTitle: 'Custom Website Development Company | Reputera',
     metaDescription:
       'Reputera builds fast, custom websites built to convert — designed around your business and your customers. See a working demo in 24–72 hours.',
@@ -403,6 +408,7 @@ export const services: Service[] = [
     slug: 'ai-solutions',
     title: 'AI Solutions',
     heading: 'AI that does real work inside your business.',
+    headingAccent: 'real work',
     metaTitle: 'AI Assistants, Agents & Chatbots for Business | Reputera',
     metaDescription:
       'Reputera builds custom AI assistants, agents, and chatbots into how your business already works — automating real tasks. See a demo in 24–72 hours.',

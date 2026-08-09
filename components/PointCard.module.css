@@ -1,0 +1,104 @@
+.card {
+  position: relative;
+  padding: clamp(1.5rem, 2.8vw, 2rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, rgba(34, 211, 238, 0.07), rgba(255, 255, 255, 0.02) 58%);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.amber {
+  background: linear-gradient(165deg, rgba(245, 185, 66, 0.07), rgba(255, 255, 255, 0.02) 58%);
+}
+
+/* Accent hairline that lights up on hover. */
+.card::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan-500), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.amber::before {
+  background: linear-gradient(90deg, transparent, var(--amber-400), transparent);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Oversized index sitting behind the copy. */
+.num {
+  position: absolute;
+  top: -0.35rem;
+  right: 0.6rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(148, 178, 226, 0.08);
+  pointer-events: none;
+  transition: color var(--transition);
+}
+
+.card:hover .num {
+  color: rgba(34, 211, 238, 0.14);
+}
+
+.amber:hover .num {
+  color: rgba(245, 185, 66, 0.14);
+}
+
+.icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  margin-bottom: 1.1rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: rgba(34, 211, 238, 0.1);
+  color: var(--cyan-400);
+  transition: transform var(--transition);
+}
+
+.amber .icon {
+  border-color: rgba(245, 185, 66, 0.3);
+  background: rgba(245, 185, 66, 0.1);
+  color: var(--amber-400);
+}
+
+.card:hover .icon {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.card h3 {
+  position: relative;
+  font-size: var(--step-1);
+  margin-bottom: 0.5rem;
+  /* Keeps the heading clear of the index numeral in narrow columns. */
+  padding-right: 2.75rem;
+}
+
+.card p {
+  position: relative;
+  color: var(--text-muted);
+  max-width: 46ch;
+}
