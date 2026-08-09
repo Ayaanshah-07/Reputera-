@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import PageHero from '@/components/PageHero';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ServiceCard from '@/components/ServiceCard';
 import CtaBand from '@/components/CtaBand';
 import JsonLd from '@/components/JsonLd';
@@ -11,26 +11,49 @@ import styles from './page.module.css';
 export const metadata = pageMetadata({
   title: 'Services — Software, Apps, Websites & AI | Reputera',
   description:
-    'Custom software development, mobile and web apps, website design and AI solutions — all built around your business model and workflow logic. Free visual demo in 24–72 hours.',
+    'Reputera builds custom software, apps, websites, and AI solutions — all engineered around how your business runs. Explore our services and get a demo in 24–72 hrs.',
   path: '/services',
 });
 
-const principles = [
+const process = [
   {
-    title: 'We start with your workflow',
-    body: 'Before anything is designed we map how the work actually moves through your business — including the parts nobody documented.',
+    step: '01',
+    title: 'Understand your workflow',
+    body: 'We learn how your business actually operates — the steps, the exceptions, the things no template accounts for.',
   },
   {
-    title: 'We show before we build',
-    body: 'A visual demo lands within 24–72 hours, so the first thing you judge is the work itself rather than a proposal.',
+    step: '02',
+    title: 'Map the logic',
+    body: "We turn your workflow into a clear design, so you can see how it'll work before anything is built.",
   },
   {
-    title: 'We ship in slices',
-    body: 'The highest-value part goes live first and gets used by real people. Everything after that is informed by that usage.',
+    step: '03',
+    title: 'Build around it',
+    body: 'We build to match your logic — not the other way around — with you in the loop, not handed off.',
   },
   {
-    title: 'You own the result',
-    body: 'Source code, data and infrastructure are yours, documented and handed over. No lock-in, no hostage situation.',
+    step: '04',
+    title: 'Fit, refine, hand over',
+    body: 'We refine against real use until it feels like it was always part of your business.',
+  },
+];
+
+const why = [
+  {
+    title: 'Built around your logic.',
+    body: 'Off-the-shelf tools make you change how you work. We build around how you already do.',
+  },
+  {
+    title: 'One team for all of it.',
+    body: "Software, app, website, AI — one team who understands the whole picture, instead of four vendors who don't talk to each other.",
+  },
+  {
+    title: 'Hands-on, start to finish.',
+    body: 'You work directly with the people building it — no account manager relaying messages.',
+  },
+  {
+    title: 'See it before you commit.',
+    body: 'Our 24–72 hour demo means you see real proof before you spend anything.',
   },
 ];
 
@@ -50,10 +73,23 @@ export default function ServicesPage() {
             itemListElement: services.map((service, index) => ({
               '@type': 'ListItem',
               position: index + 1,
-              name: service.title,
-              url: `${site.url}/services/${service.slug}`,
+              item: {
+                '@type': 'Service',
+                name: service.title,
+                serviceType: service.serviceType ?? service.title,
+                description: service.hub.copy,
+                url: `${site.url}/services/${service.slug}`,
+                provider: { '@id': `${site.url}/#organization` },
+              },
             })),
           },
+        ]}
+      />
+
+      <Breadcrumbs
+        trail={[
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
         ]}
       />
 
@@ -61,87 +97,93 @@ export default function ServicesPage() {
         eyebrow="Services"
         title={
           <>
-            Everything we build starts with <span className="text-gradient">how you work</span>.
+            One team, built around <span className="text-gradient">your business</span>.
           </>
         }
-        intro="Custom software leads what we do. Apps, websites and AI extend it — designed by the same team, on the same foundations, so the pieces fit together instead of being stitched between vendors."
+        intro="Software, apps, websites, AI — most companies make you juggle a different agency for each. Reputera does all four, with one principle running through everything: we build around how your business actually works, not around a template. Whatever you need built, it starts with your logic."
         actions={[
-          { label: 'Get a Demo', href: '/get-a-demo' },
-          { label: 'Talk to us', href: '/contact', variant: 'ghost' },
+          {
+            label: (
+              <>
+                Start Your Demo <span aria-hidden="true">→</span>
+              </>
+            ),
+            href: '/get-a-demo',
+          },
         ]}
       />
 
+      {/* ---------------------------------------------------- the four services */}
       <section className="section" aria-labelledby="all-services">
         <div className="container">
-          <h2 id="all-services" className="visually-hidden">
-            All services
-          </h2>
+          <div className="section-head">
+            <p className="eyebrow">The four services</p>
+            <h2 id="all-services">What we build</h2>
+            <p>Four services, one team, one standard — each built around your business, not off a shelf.</p>
+          </div>
+
           <div className="grid grid-2">
             {services.map((service, index) => (
-              <ServiceCard key={service.slug} service={service} index={index} />
+              <ServiceCard
+                key={service.slug}
+                service={service}
+                index={index}
+                tag={service.hub.tag}
+                body={service.hub.copy}
+                linkLabel={`Explore ${service.title}`}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section section-divider" aria-labelledby="principles-title">
+      {/* --------------------------------------------------------------- process */}
+      <section className={styles.processSection} aria-labelledby="process-title">
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">How we work</p>
-            <h2 id="principles-title">Four rules that apply to every project.</h2>
+            <h2 id="process-title">One process behind everything we build</h2>
+            <p>
+              No matter which service you need, we build the same way — business first, code second.
+              It&apos;s why what we build actually fits.
+            </p>
+          </div>
+
+          <ol className={styles.process}>
+            {process.map((step, index) => (
+              <li key={step.step} className="reveal" data-reveal-index={index}>
+                <span className={styles.processNum}>{step.step}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------- why */}
+      <section className="section" aria-labelledby="why-title">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Why Reputera</p>
+            <h2 id="why-title">Why work with Reputera</h2>
           </div>
 
           <div className="grid grid-2">
-            {principles.map((principle, index) => (
-              <article key={principle.title} className="card card-hover reveal" data-reveal-index={index}>
-                <h3>{principle.title}</h3>
-                <p>{principle.body}</p>
+            {why.map((point, index) => (
+              <article key={point.title} className="card card-hover reveal" data-reveal-index={index}>
+                <h3>{point.title}</h3>
+                <p>{point.body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section" aria-labelledby="combined-title">
-        <div className="container">
-          <div className={styles.combined}>
-            <div>
-              <p className="eyebrow eyebrow-amber">Not sure which you need?</p>
-              <h2 id="combined-title">Most projects are more than one of these.</h2>
-              <p className="lead">
-                A booking platform is software, a website and an app. A support assistant is AI inside
-                software you already run. Describe the outcome you want and we will tell you what it takes —
-                and where to start so you see value soonest.
-              </p>
-              <div className="btn-row" style={{ marginTop: '1.75rem' }}>
-                <Link href="/get-a-demo" className="btn btn-amber">
-                  Describe your project
-                </Link>
-              </div>
-            </div>
-            <ul className={styles.exampleList}>
-              <li>
-                <strong>&ldquo;Customers book online, my team sees it instantly&rdquo;</strong>
-                <span>Website + custom software</span>
-              </li>
-              <li>
-                <strong>&ldquo;My field team needs it on their phones&rdquo;</strong>
-                <span>App + custom software</span>
-              </li>
-              <li>
-                <strong>&ldquo;Answer the same questions without staff time&rdquo;</strong>
-                <span>AI solutions + website</span>
-              </li>
-              <li>
-                <strong>&ldquo;Replace the spreadsheet everything depends on&rdquo;</strong>
-                <span>Custom software</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <CtaBand />
+      <CtaBand
+        title="Not sure which you need? Start with a demo."
+        body="Tell us what you're trying to achieve — we'll figure out whether it's software, an app, a website, AI, or a mix, and come back with a real, visual demo in 24–72 hours. No sales call, no commitment."
+      />
     </>
   );
 }

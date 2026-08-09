@@ -60,8 +60,10 @@ export type Service = {
   serviceType?: string;
   /** Small label shown on the service card. */
   tag: string;
-  /** Card copy, also used in schema. Leads with the target keyword. */
+  /** Homepage card copy, also used in schema. Leads with the target keyword. */
   summary: string;
+  /** The /services hub frames each service slightly differently to the homepage. */
+  hub: { tag: string; copy: string };
   /** Lead paragraph under the H1. */
   intro: string;
   accent: 'cyan' | 'amber';
@@ -102,6 +104,11 @@ export const services: Service[] = [
     tag: 'Lead offering',
     summary:
       'Custom software mapped to how your business actually runs — ERP systems, internal tools, and workflow automation, including AI-powered features. We build the system around your logic, so it fits like it was always yours.',
+    hub: {
+      tag: 'Lead offering',
+      copy:
+        "Custom software mapped to how your business runs — ERP systems, internal tools, workflow automation, and AI-powered features. The system fits your logic, because we build it around your logic.",
+    },
     intro:
       'Most software forces your business to bend around it. We do the opposite. Reputera builds custom software that maps to how your business actually runs — your workflow, your logic, your rules — so the system fits like it was designed from the inside out. Because it was.',
     accent: 'cyan',
@@ -203,6 +210,11 @@ export const services: Service[] = [
     tag: 'Mobile & web',
     summary:
       "Custom apps that put your workflow in your team's or customers' pocket — built for how they'll actually use it, not a generic shell forced to fit.",
+    hub: {
+      tag: 'Mobile & web',
+      copy:
+        "Custom mobile and web apps built for how your team or customers actually work — not a generic shell forced to fit.",
+    },
     intro:
       'A generic app forces your team or customers to adapt to it. Reputera builds custom apps around your real workflow — mobile and web apps that do exactly what your business needs, on the device where the work actually happens.',
     accent: 'amber',
@@ -302,6 +314,11 @@ export const services: Service[] = [
     tag: 'Web',
     summary:
       'Fast, sharp, search-friendly websites built to convert — the front door to everything else Reputera builds for you.',
+    hub: {
+      tag: 'Web',
+      copy:
+        "Fast, custom, search-friendly websites built to convert — the front door to everything else you do.",
+    },
     intro:
       'Your website is often the first thing a customer sees — it should do more than look good. Reputera builds fast, custom websites designed around your business and built to convert visitors into customers, with the search visibility to get found in the first place.',
     accent: 'cyan',
@@ -392,6 +409,11 @@ export const services: Service[] = [
     tag: 'AI Solutions',
     summary:
       'AI assistants, agents, and chatbots built into how your business already operates — automating real work, not bolted on as a gimmick.',
+    hub: {
+      tag: 'AI',
+      copy:
+        "AI assistants, agents, and chatbots built into how your business already operates — automating real work, not bolted on as a gimmick.",
+    },
     intro:
       'AI is only useful if it actually saves you time. Reputera builds custom AI assistants, agents, and chatbots into how your business already operates — automating the repetitive work, answering the routine questions, and handling the tasks that pull your team away from what matters. Not a gimmick bolted on the side — intelligence built into the workflow.',
     accent: 'amber',

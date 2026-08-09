@@ -1,33 +1,3 @@
-.breadcrumbs {
-  padding-top: 1.5rem;
-  font-size: var(--step--1);
-}
-
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  color: var(--text-dim);
-}
-
-.breadcrumbs li + li::before {
-  content: '/';
-  margin-right: 0.5rem;
-  color: var(--line-strong);
-}
-
-.breadcrumbs a {
-  color: var(--text-muted);
-}
-
-.breadcrumbs a:hover {
-  color: var(--cyan-400);
-}
-
 .capIcon {
   display: grid;
   place-items: center;

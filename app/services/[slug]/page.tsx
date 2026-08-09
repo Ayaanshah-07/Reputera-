@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import ServiceIcon from '@/components/ServiceIcon';
 import CtaBand from '@/components/CtaBand';
 import Faq from '@/components/Faq';
@@ -70,19 +71,13 @@ export default async function ServicePage({ params }: Params) {
         ]}
       />
 
-      <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-        <div className="container">
-          <ol>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/services">Services</Link>
-            </li>
-            <li aria-current="page">{service.title}</li>
-          </ol>
-        </div>
-      </nav>
+      <Breadcrumbs
+        trail={[
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: service.title, path: `/services/${service.slug}` },
+        ]}
+      />
 
       <PageHero
         eyebrow={service.flagship ? 'Flagship service' : 'Service'}
