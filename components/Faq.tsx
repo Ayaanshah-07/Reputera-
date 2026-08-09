@@ -10,7 +10,7 @@ export default function Faq({ items, title = 'Common questions' }: { items: FaqI
   return (
     <section className="section section-tight" aria-labelledby="faq-title">
       <div className="container container-narrow">
-        <h2 id="faq-title" className={styles.title}>
+        <h2 id="faq-title" className={`heading-fade ${styles.title}`}>
           {title}
         </h2>
         <div className={styles.list}>

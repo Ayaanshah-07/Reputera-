@@ -88,7 +88,7 @@ export default function GetADemoPage() {
         <div className="container">
           <div className={styles.layout}>
             <div className={styles.formCol}>
-              <h2 id="form-title" className={styles.formTitle}>
+              <h2 id="form-title" className={`heading-fade ${styles.formTitle}`}>
                 Your demo request
               </h2>
               <p className={`muted ${styles.formSub}`}>

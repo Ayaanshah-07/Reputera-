@@ -115,7 +115,7 @@ export default function ReviewsPage() {
           <div className={styles.waitlist}>
             <div>
               <span className="badge badge-amber">Early access</span>
-              <h2 id="waitlist-title" className={styles.waitlistTitle}>
+              <h2 id="waitlist-title" className={`heading-fade ${styles.waitlistTitle}`}>
                 Join the waitlist.
               </h2>
               <p className="muted">
@@ -132,7 +132,7 @@ export default function ReviewsPage() {
 
       <section className="section section-divider" aria-labelledby="agency-title">
         <div className="container container-narrow">
-          <h2 id="agency-title">Need reputation tooling built into your own system?</h2>
+          <h2 id="agency-title" className="heading-fade">Need reputation tooling built into your own system?</h2>
           <p className="lead" style={{ marginTop: '1rem' }}>
             That is the agency side of Reputera. We build custom software, apps and websites around your
             exact workflow — including review capture, customer feedback loops and everything around them.

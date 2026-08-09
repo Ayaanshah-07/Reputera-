@@ -106,7 +106,7 @@ export default function AboutPage() {
         <div className="container">
           <div className={styles.storyGrid}>
             <div className={styles.story}>
-              <h2 id="story-title">Where ideas earn their reputation.</h2>
+              <h2 id="story-title" className="heading-fade">Where ideas earn their reputation.</h2>
               <p>
                 Every business we meet has a way of working that took years to settle into shape — the
                 sequence, the exceptions, the judgement calls, the spreadsheet somebody built once that the

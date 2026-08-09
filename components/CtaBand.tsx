@@ -24,7 +24,7 @@ export default function CtaBand({
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.copy}>
-            <h2 id="cta-band-title">{title}</h2>
+            <h2 id="cta-band-title" className="heading-fade">{title}</h2>
             <p>{body}</p>
           </div>
           <div className="btn-row">

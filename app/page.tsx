@@ -142,7 +142,7 @@ export default function HomePage() {
           <div className={styles.reviewsCard}>
             <div className={styles.reviewsCopy}>
               <p className="eyebrow eyebrow-amber">Coming soon</p>
-              <h2 id="product-title" className={styles.reviewsHeading}>
+              <h2 id="product-title" className={`heading-fade ${styles.reviewsHeading}`}>
                 Reputera <span className="text-amber">Reviews</span>
               </h2>
               <p className={styles.reviewsLead}>
