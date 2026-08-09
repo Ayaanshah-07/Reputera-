@@ -119,6 +119,13 @@
     grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
   }
 
+  /* The column has to fill the row height, or the sticky child has nowhere to
+     travel and simply scrolls away — leaving the right side blank. */
+  .sidebar {
+    align-self: stretch;
+    height: 100%;
+  }
+
   .sticky {
     position: sticky;
     top: 6rem;

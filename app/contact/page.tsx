@@ -54,6 +54,7 @@ export default function ContactPage() {
             </div>
 
             <aside className={styles.aside} aria-labelledby="direct-title">
+              <div className={styles.sticky}>
               <div className={styles.card}>
                 <h2 id="direct-title" className={styles.cardTitle}>
                   Reach us directly
@@ -83,6 +84,7 @@ export default function ContactPage() {
                 <Link href="/get-a-demo" className="btn btn-primary btn-block">
                   Get a Demo
                 </Link>
+                </div>
               </div>
             </aside>
           </div>

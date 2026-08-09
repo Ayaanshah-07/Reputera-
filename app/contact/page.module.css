@@ -9,9 +9,12 @@
 }
 
 .aside {
+  min-width: 0;
+}
+
+.sticky {
   display: grid;
   gap: 1rem;
-  min-width: 0;
 }
 
 .card {
@@ -68,7 +71,13 @@
     grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   }
 
+  /* Column fills the row so the sticky child has room to travel. */
   .aside {
+    align-self: stretch;
+    height: 100%;
+  }
+
+  .sticky {
     position: sticky;
     top: 6rem;
   }
