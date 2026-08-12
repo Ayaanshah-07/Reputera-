@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import WaitlistForm from '@/components/WaitlistForm';
+import ReviewsVisual from '@/components/ReviewsVisual';
 import JsonLd from '@/components/JsonLd';
 import Faq from '@/components/Faq';
 import { pageMetadata } from '@/lib/seo';
@@ -89,54 +90,35 @@ export default function ReviewsPage() {
       <section className="section" aria-labelledby="product-title">
         <div className="container">
           <div className={styles.productHead}>
-            <div>
+            <div className={styles.productCopy}>
               <p className="eyebrow eyebrow-amber">The product</p>
               <h2 id="product-title" className={`heading-fade ${styles.productTitle}`}>
-                Reputation management for local businesses, sold to the agencies that serve them.
+                Reputation management for local businesses.
               </h2>
+
+              <div className={styles.productIntro}>
+                <p>
+                  Every business lives or dies by its Google rating, and almost none of them keep up with
+                  it. Reputera automates the whole loop: pull the reviews in, draft intelligent replies, get
+                  them approved and posted, then go get <em>more</em> reviews through invitation campaigns —
+                  and turn the best ones into marketing assets.
+                </p>
+                <p>
+                  One dashboard covers every business on your books, so a single account manager can run
+                  reputation for a whole portfolio instead of logging into a dozen Google accounts by hand.
+                </p>
+              </div>
             </div>
 
-            <div className={styles.productIntro}>
-              <p>
-                Every business lives or dies by its Google rating, and almost none of them keep up with it.
-                Reputera automates the whole loop: pull the reviews in, draft intelligent replies, get them
-                approved and posted, then go get <em>more</em> reviews through invitation campaigns — and
-                turn the best ones into marketing assets.
-              </p>
-              <p>
-                One dashboard covers every business on your books, so a single account manager can run
-                reputation for a whole portfolio instead of logging into a dozen Google accounts by hand.
-              </p>
+            <div className={`reveal ${styles.productVisual}`}>
+              <ReviewsVisual />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------ benefits */}
-      <section className={styles.benefitsSection} aria-labelledby="benefits-title">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow eyebrow-amber">What it will do</p>
-            <h2 id="benefits-title">Your review pipeline, in one place.</h2>
-            <p>
-              Reviews are the closest thing a local business has to a public credit score. This is the tool
-              we wanted for our own clients, built properly.
-            </p>
-          </div>
-
-          <div className="grid grid-2">
-            {reviewsBenefits.map((benefit, index) => (
-              <article key={benefit.title} className="card card-hover reveal" data-reveal-index={index}>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.body}</p>
-              </article>
-            ))}
           </div>
         </div>
       </section>
 
       {/* ------------------------------------------------------------ features */}
-      <section className="section" aria-labelledby="features-title">
+      <section className={styles.featuresSection} aria-labelledby="features-title">
         <div className="container">
           <div className="section-head">
             <p className="eyebrow eyebrow-amber">Everything included</p>
@@ -169,6 +151,29 @@ export default function ReviewsPage() {
             Reputera Reviews is in development. Features described here are planned and may change before
             release.
           </p>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------ benefits */}
+      <section className="section" aria-labelledby="benefits-title">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow eyebrow-amber">What it will do</p>
+            <h2 id="benefits-title">Your review pipeline, in one place.</h2>
+            <p>
+              Reviews are the closest thing a local business has to a public credit score. This is the tool
+              we wanted for our own clients, built properly.
+            </p>
+          </div>
+
+          <div className="grid grid-2">
+            {reviewsBenefits.map((benefit, index) => (
+              <article key={benefit.title} className="card card-hover reveal" data-reveal-index={index}>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
