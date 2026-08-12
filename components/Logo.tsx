@@ -2,12 +2,12 @@ import Link from 'next/link';
 import styles from './Logo.module.css';
 
 /**
- * Placeholder brand lockup.
+ * The Reputera lockup: the mark plus the wordmark with its amber full stop.
  *
- * TODO(brand): swap the inline <svg> mark below for the supplied logo file.
- * Drop the asset in /public (e.g. /public/logo.svg) and replace the mark with
- * <Image src="/logo.svg" alt="" width={34} height={34} priority /> — the
- * wordmark, sizing and link behaviour can stay exactly as they are.
+ * The mark is inline SVG rather than an <img> so it needs no extra request and
+ * can pick up hover and focus styling. Keep it in sync with lib/brand.ts, which
+ * feeds the favicon and the social card; /public/logo.svg is the standalone
+ * copy for use outside the site.
  */
 export default function Logo({ compact = false }: { compact?: boolean }) {
   return (

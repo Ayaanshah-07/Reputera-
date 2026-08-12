@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { markDataUri } from '@/lib/brand';
 import { site } from '@/lib/site';
 
 export const alt = `${site.name} — ${site.tagline}`;
@@ -25,23 +26,12 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 16,
-              border: '3px solid #34e3f5',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: 30,
-              fontWeight: 700,
-              color: '#34e3f5',
-            }}
-          >
-            R
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={markDataUri} width={64} height={64} alt="" />
+          <div style={{ display: 'flex', fontSize: 38, fontWeight: 600, letterSpacing: '-0.03em' }}>
+            <span>Reputera</span>
+            <span style={{ color: '#f5b942' }}>.</span>
           </div>
-          <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: '-0.02em' }}>Reputera</div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>

@@ -1,13 +1,10 @@
 import { ImageResponse } from 'next/og';
+import { markDataUri } from '@/lib/brand';
 
-export const size = { width: 32, height: 32 };
+export const size = { width: 64, height: 64 };
 export const contentType = 'image/png';
 
-/**
- * Placeholder favicon matching the placeholder nav mark.
- * TODO(brand): replace this file with the real icon — drop `icon.png`
- * (or `icon.svg`) into /app and delete this route.
- */
+/** Browser-tab icon: the Reputera mark on the brand navy. */
 export default function Icon() {
   return new ImageResponse(
     (
@@ -19,15 +16,11 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           background: '#070b18',
-          borderRadius: 8,
-          border: '2px solid #34e3f5',
-          color: '#34e3f5',
-          fontSize: 20,
-          fontWeight: 700,
-          fontFamily: 'sans-serif',
+          borderRadius: 12,
         }}
       >
-        R
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={markDataUri} width={52} height={52} alt="" />
       </div>
     ),
     size,

@@ -130,10 +130,19 @@ failed fields, keyboard-operable nav and accordions, and every animation disable
 
 ---
 
+## Brand assets
+
+The logo is the mark plus the "Reputera." wordmark. It is defined once as inline SVG in
+`components/Logo.tsx` (nav and footer) and as a data URI in `lib/brand.ts`, which feeds the generated
+favicon (`app/icon.tsx`) and social card (`app/opengraph-image.tsx`). `/public/logo.svg` is the
+standalone copy for anything outside the app — email signatures, social profiles, directory listings.
+
+Changing the mark means editing `lib/brand.ts` and the inline copy in `components/Logo.tsx`.
+
+---
+
 ## Still to do
 
-- **Logo** — the nav and footer use a placeholder mark in `components/Logo.tsx`. Drop the real asset in
-  `/public` and follow the `TODO(brand)` comment in that file; sizing and layout are already in place.
 - **Founder photos** — `app/about/page.tsx` uses initials avatars, marked with a `TODO(brand)` comment.
 - **Real phone number** — the placeholder in `lib/site.ts` still needs replacing.
 - **Case-study specifics** — `lib/industries.ts` is written from the brief; confirm the details match
