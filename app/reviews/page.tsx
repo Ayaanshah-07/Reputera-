@@ -5,6 +5,7 @@ import JsonLd from '@/components/JsonLd';
 import Faq from '@/components/Faq';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema, faqSchema, softwareApplicationSchema } from '@/lib/schema';
+import { planLabel, reviewsFeatures } from '@/lib/reviews';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
@@ -14,24 +15,6 @@ export const metadata = pageMetadata({
   path: '/reviews',
 });
 
-const features = [
-  {
-    title: 'Collect more reviews',
-    body: 'Simple review requests by text and email, timed for the moment a customer is most likely to say something good.',
-  },
-  {
-    title: 'Monitor as they land',
-    body: 'New Google reviews surface the day they appear, so nothing negative sits unanswered for a fortnight.',
-  },
-  {
-    title: 'Reply without the grind',
-    body: 'Draft replies in your own tone, ready to review and post — turning an hour of writing into a couple of minutes.',
-  },
-  {
-    title: 'See the trend',
-    body: 'Rating over time, review volume and what customers keep mentioning — the signal underneath the star count.',
-  },
-];
 
 const faqs = [
   {
@@ -86,18 +69,33 @@ export default function ReviewsPage() {
       <section className="section" aria-labelledby="features-title">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow eyebrow-amber">What it will do</p>
-            <h2 id="features-title">Your review pipeline, in one place.</h2>
+            <p className="eyebrow eyebrow-amber">The product</p>
+            <h2 id="features-title">
+              Reputation management for local businesses, sold to the agencies that serve them.
+            </h2>
             <p>
-              Reviews are the closest thing a local business has to a public credit score. This is the tool
-              we wanted for our own clients, built properly.
+              Every business lives or dies by its Google rating, and almost none of them keep up with it.
+              Reputera automates the whole loop: pull the reviews in, draft intelligent replies, get them
+              approved and posted, then go get <em>more</em> reviews through invitation campaigns — and turn
+              the best ones into marketing assets.
             </p>
           </div>
 
           <div className="grid grid-2">
-            {features.map((feature, index) => (
-              <article key={feature.title} className="card card-hover reveal" data-reveal-index={index}>
-                <h3>{feature.title}</h3>
+            {reviewsFeatures.map((feature, index) => (
+              <article
+                key={feature.title}
+                className={`card card-hover reveal ${styles.feature}`}
+                data-reveal-index={index % 4}
+              >
+                <div className={styles.featureHead}>
+                  <h3>{feature.title}</h3>
+                  <span
+                    className={`${styles.plan} ${feature.plan === 'growth' ? styles.planGrowth : ''}`}
+                  >
+                    {planLabel[feature.plan]}
+                  </span>
+                </div>
                 <p>{feature.body}</p>
               </article>
             ))}

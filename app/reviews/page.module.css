@@ -9,6 +9,45 @@
   max-width: 34ch;
 }
 
+/* ------------------------------------------------------- feature cards --- */
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featureHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.featureHead h3 {
+  font-size: var(--step-0);
+  margin: 0;
+}
+
+.plan {
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: rgba(34, 211, 238, 0.1);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
+  white-space: nowrap;
+}
+
+.planGrowth {
+  border-color: rgba(245, 185, 66, 0.35);
+  background: rgba(245, 185, 66, 0.12);
+  color: var(--amber-400);
+}
+
 .disclaimer {
   margin-top: 2rem;
   font-size: var(--step--1);
