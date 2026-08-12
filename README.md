@@ -88,6 +88,36 @@ placeholder; replace it before launch.**
 
 ---
 
+## WhatsApp bot
+
+The company number **+91 90822 17597** has WhatsApp; **+971 50 415 4976** is listed on the contact page
+as an additional voice line only.
+
+Two separate things:
+
+- **Click-to-chat** — the floating button, the contact page and the footer link to `wa.me`. These work
+  with no configuration at all.
+- **Automated replies** — `app/api/whatsapp/route.ts` is a Meta WhatsApp Cloud API webhook. It answers
+  the verification handshake, checks each delivery's `x-hub-signature-256`, and replies through
+  `lib/whatsapp.ts`.
+
+To turn the bot on:
+
+1. Add the WhatsApp product to a Meta app and register the company number.
+2. Set the webhook callback URL to `https://<domain>/api/whatsapp`, use your `WHATSAPP_VERIFY_TOKEN` as
+   the verify token, and subscribe to the `messages` field.
+3. Set `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID` and `WHATSAPP_APP_SECRET` (see `.env.example`).
+
+The bot is rules-based, not model-backed — replies are predictable, cost nothing per message, and can't
+invent a price or a feature. It offers a four-option menu (what we build / free demo / Reputera Reviews /
+talk to a human), answers keywords, and goes quiet once someone asks for a human so it never talks over
+the team. Anything that looks like a real enquiry is forwarded to the same inbox as the web forms.
+
+Conversation state is in memory, so it resets when the server restarts — a returning visitor just gets
+the greeting again. Move it to a store if that becomes a problem.
+
+---
+
 ## Deployment
 
 ### Vercel (recommended)

@@ -3,6 +3,7 @@ import { Inter, Sora } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import JsonLd from '@/components/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/schema';
 import { site } from '@/lib/site';
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <WhatsAppButton />
         <ScrollReveal />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </body>

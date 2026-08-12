@@ -14,10 +14,22 @@ export const site = {
   // Override in production with NEXT_PUBLIC_SITE_URL (Vercel/Netlify env var).
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://reputera.in').replace(/\/$/, ''),
   email: 'info@reputera.in',
-  phone: '+1 (000) 000-0000',
+  /** Company line. WhatsApp is connected to this one. */
+  phone: '+91 90822 17597',
+  /** Digits only, for wa.me and the Cloud API. */
+  whatsapp: '919082217597',
+  /** Additional contact number. No WhatsApp on this line. */
+  phoneAlt: '+971 50 415 4976',
   locale: 'en_US',
   twitter: '@reputera',
 } as const;
+
+/** Prefilled text on every click-to-chat link. */
+export const whatsappGreeting =
+  "Hi Reputera — I'd like to talk about a project.";
+
+export const whatsappLink = (message: string = whatsappGreeting) =>
+  `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 
 export type NavLink = {
   href: string;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Logo from './Logo';
-import { services, site } from '@/lib/site';
+import { services, site, whatsappLink } from '@/lib/site';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -59,6 +59,11 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href={`mailto:${site.email}`}>Email us</a>
+                </li>
+                <li>
+                  <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
+                    WhatsApp
+                  </a>
                 </li>
               </ul>
             </div>

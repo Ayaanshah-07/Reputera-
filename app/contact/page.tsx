@@ -4,7 +4,7 @@ import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
-import { site } from '@/lib/site';
+import { site, whatsappLink } from '@/lib/site';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
@@ -65,8 +65,21 @@ export default function ContactPage() {
                     <a href={`mailto:${site.email}`}>{site.email}</a>
                   </li>
                   <li>
-                    <span>Phone</span>
+                    <span>Phone &amp; WhatsApp</span>
                     <a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a>
+                    <a
+                      href={whatsappLink()}
+                      className={styles.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Message us on WhatsApp
+                    </a>
+                  </li>
+                  <li>
+                    <span>Additional number</span>
+                    <a href={`tel:${site.phoneAlt.replace(/[^+\d]/g, '')}`}>{site.phoneAlt}</a>
+                    <em className={styles.noteInline}>Calls only — no WhatsApp on this line.</em>
                   </li>
                   <li>
                     <span>Response time</span>

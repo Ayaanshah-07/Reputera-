@@ -14,7 +14,7 @@ export const organizationSchema = () => ({
   slogan: site.tagline,
   description: site.description,
   email: site.email,
-  telephone: site.phone,
+  telephone: [site.phone, site.phoneAlt],
   areaServed: 'Worldwide',
   founder: { '@type': 'Person', name: 'Ayaan Shah' },
   knowsAbout: [
