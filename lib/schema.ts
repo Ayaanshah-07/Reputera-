@@ -1,4 +1,5 @@
 import { services, site, type Service } from './site';
+import { reviewsFeatures } from './reviews';
 
 /** JSON-LD builders. Rendered via the <JsonLd /> component. */
 
@@ -95,11 +96,17 @@ export const softwareApplicationSchema = () => ({
   '@type': 'SoftwareApplication',
   name: 'Reputera Reviews',
   applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Reputation management software',
   operatingSystem: 'Web',
   description:
-    'A reputation management subscription that helps businesses collect, monitor and respond to Google reviews. Currently in development.',
+    'Google review management software for agencies: collect reviews automatically, draft AI replies in each business’s voice, publish to Google Business Profile, run invitation campaigns, and report on sentiment. Currently in development.',
   url: `${site.url}/reviews`,
   publisher: { '@id': `${site.url}/#organization` },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Marketing agencies serving local businesses',
+  },
+  featureList: reviewsFeatures.map((feature) => feature.title),
   offers: {
     '@type': 'Offer',
     availability: 'https://schema.org/PreOrder',

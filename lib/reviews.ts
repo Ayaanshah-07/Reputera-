@@ -72,3 +72,26 @@ export const planLabel: Record<ReviewsFeature['plan'], string> = {
   all: 'All plans',
   growth: 'Growth+',
 };
+
+/**
+ * The high-level benefits, kept alongside the detailed capability list: this
+ * section frames the outcome, the feature grid below spells out what ships.
+ */
+export const reviewsBenefits = [
+  {
+    title: 'Collect more reviews',
+    body: 'Invitation campaigns by email and WhatsApp, plus printable QR codes, so happy customers are asked at the moment they are most likely to say something good.',
+  },
+  {
+    title: 'Monitor as they land',
+    body: 'New Google reviews are pulled in on a schedule and analysed for sentiment, so nothing negative sits unanswered for a fortnight.',
+  },
+  {
+    title: 'Reply without the grind',
+    body: 'Replies are drafted in the business’s own voice, ready for a human to approve and publish — turning an hour of writing into a couple of minutes.',
+  },
+  {
+    title: 'See the trend',
+    body: 'Rating over time, review volume and what customers keep mentioning — the signal underneath the star count, in scheduled reports and a live dashboard.',
+  },
+];

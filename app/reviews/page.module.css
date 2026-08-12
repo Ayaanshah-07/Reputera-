@@ -9,6 +9,62 @@
   max-width: 34ch;
 }
 
+/* ------------------------------------------------------- product intro --- */
+
+/* Two columns so a long positioning statement uses the full width instead of
+   wrapping into a narrow ragged column with empty space beside it. */
+.productHead {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: start;
+}
+
+.productTitle {
+  font-size: var(--step-3);
+  max-width: 20ch;
+}
+
+.productTitle::after {
+  content: '';
+  display: block;
+  width: 3.25rem;
+  height: 3px;
+  margin-top: 1.1rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--amber-400), var(--cyan-500));
+}
+
+.productIntro p {
+  color: var(--text);
+  font-size: var(--step-1);
+  line-height: 1.6;
+}
+
+.productIntro p + p {
+  margin-top: 1rem;
+  font-size: var(--step-0);
+  color: var(--text-muted);
+}
+
+.benefitsSection {
+  padding-block: var(--space-2xl);
+  border-block: 1px solid var(--line);
+  background:
+    radial-gradient(760px 340px at 85% 0%, rgba(245, 185, 66, 0.09), transparent 62%),
+    rgba(4, 7, 15, 0.4);
+}
+
+@media (min-width: 900px) {
+  .productHead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .productTitle {
+    font-size: var(--step-4);
+  }
+}
+
 /* ------------------------------------------------------- feature cards --- */
 
 .feature {
