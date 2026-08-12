@@ -79,7 +79,6 @@ export default function ContactPage() {
                   <li>
                     <span>Additional number</span>
                     <a href={`tel:${site.phoneAlt.replace(/[^+\d]/g, '')}`}>{site.phoneAlt}</a>
-                    <em className={styles.noteInline}>Calls only — no WhatsApp on this line.</em>
                   </li>
                   <li>
                     <span>Response time</span>

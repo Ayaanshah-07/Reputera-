@@ -90,8 +90,8 @@ placeholder; replace it before launch.**
 
 ## WhatsApp bot
 
-The company number **+91 90822 17597** has WhatsApp; **+971 50 415 4976** is listed on the contact page
-as an additional voice line only.
+The company number **+91 90822 17597** has WhatsApp. **+971 50 415 4976** is listed on the contact page
+as an additional number (no WhatsApp connected to it).
 
 Two separate things:
 

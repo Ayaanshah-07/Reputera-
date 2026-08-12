@@ -67,14 +67,6 @@
   background: #25d366;
 }
 
-.noteInline {
-  display: block;
-  margin-top: 0.2rem;
-  font-style: normal;
-  font-size: var(--step--1);
-  color: var(--text-dim);
-}
-
 .details strong {
   font-weight: 500;
   color: var(--text);
