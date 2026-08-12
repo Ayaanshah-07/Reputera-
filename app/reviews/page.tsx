@@ -4,6 +4,7 @@ import WaitlistForm from '@/components/WaitlistForm';
 import ReviewsVisual from '@/components/ReviewsVisual';
 import JsonLd from '@/components/JsonLd';
 import Faq from '@/components/Faq';
+import CtaBand from '@/components/CtaBand';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema, faqSchema, softwareApplicationSchema } from '@/lib/schema';
 import { planLabel, reviewsBenefits, reviewsFeatures } from '@/lib/reviews';
@@ -216,6 +217,11 @@ export default function ReviewsPage() {
           </div>
         </div>
       </section>
+
+      <CtaBand
+        title="Want something like this, built for you?"
+        body="Describe it and we come back with a real visual demo in 24–72 hours — no cost, no sales call."
+      />
     </>
   );
 }

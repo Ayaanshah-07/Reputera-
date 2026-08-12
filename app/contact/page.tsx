@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
+import CtaBand from '@/components/CtaBand';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
@@ -102,6 +103,11 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <CtaBand
+        title="Would you rather just see it?"
+        body="Skip the back and forth — describe what you want built and we send a visual demo within 24–72 hours."
+      />
     </>
   );
 }

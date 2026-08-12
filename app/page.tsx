@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import ServiceCard from '@/components/ServiceCard';
+import CtaBand from '@/components/CtaBand';
 import CaseVisual from '@/components/CaseVisual';
 import DemoVisual from '@/components/DemoVisual';
 import ReviewsVisual from '@/components/ReviewsVisual';
@@ -206,6 +207,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <CtaBand />
     </>
   );
 }

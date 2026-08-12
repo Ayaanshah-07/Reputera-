@@ -1,0 +1,195 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  background: rgba(4, 7, 15, 0.72);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 260ms ease both;
+}
+
+.panel {
+  position: relative;
+  width: min(100%, 34rem);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(165deg, rgba(18, 28, 61, 0.98), rgba(7, 11, 24, 0.99));
+  box-shadow: 0 50px 110px -40px rgba(0, 0, 0, 0.95);
+  animation: popIn 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Drifting brand wash behind the copy. */
+.glow {
+  position: absolute;
+  inset: -30% -20% auto;
+  height: 80%;
+  background:
+    radial-gradient(42% 60% at 25% 40%, rgba(34, 211, 238, 0.3), transparent 70%),
+    radial-gradient(38% 55% at 78% 55%, rgba(245, 185, 66, 0.22), transparent 70%);
+  filter: blur(14px);
+  pointer-events: none;
+  animation: drift 14s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6%, 4%, 0) scale(1.12); }
+}
+
+/* ------------------------------------------------------------- content --- */
+
+.close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition), background-color var(--transition), transform var(--transition);
+}
+
+.close:hover {
+  color: var(--text-bright);
+  background: rgba(255, 255, 255, 0.09);
+  transform: rotate(90deg);
+}
+
+.close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.eyebrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.32rem 0.85rem 0.32rem 0.7rem;
+  margin-bottom: 1.1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: rgba(34, 211, 238, 0.1);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--cyan-400);
+}
+
+.pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 2.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.title {
+  position: relative;
+  font-size: var(--step-3);
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+.body {
+  position: relative;
+  margin-top: 0.9rem;
+  color: var(--text-muted);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+
+.body strong {
+  color: var(--text-bright);
+  font-weight: 600;
+}
+
+.points {
+  position: relative;
+  list-style: none;
+  margin: 1.35rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.points li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: var(--step--1);
+  color: var(--text);
+}
+
+.points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.36em;
+  width: 0.95rem;
+  height: 0.55rem;
+  border-left: 2px solid var(--cyan-400);
+  border-bottom: 2px solid var(--cyan-400);
+  transform: rotate(-45deg);
+  border-radius: 1px;
+}
+
+.actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.25rem;
+  margin-top: 1.85rem;
+}
+
+.later {
+  background: none;
+  border: 0;
+  padding: 0.4rem 0;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--text-dim);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.later:hover {
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .panel,
+  .glow,
+  .pulse {
+    animation: none;
+  }
+}

@@ -4,6 +4,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import DemoPopup from '@/components/DemoPopup';
 import JsonLd from '@/components/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/schema';
 import { site } from '@/lib/site';
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <DemoPopup />
         <ScrollReveal />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </body>
