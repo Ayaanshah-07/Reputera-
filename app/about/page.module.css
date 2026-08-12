@@ -4,6 +4,24 @@
   align-items: start;
 }
 
+/* Matches the shared section-head treatment: gradient rule under the heading,
+   a lead-sized opening paragraph, muted body after it. */
+.storyTitle::after {
+  content: '';
+  display: block;
+  width: 3.25rem;
+  height: 3px;
+  margin-top: 1.1rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--cyan-500), var(--amber-400));
+}
+
+.storyLead {
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--text) !important;
+}
+
 .story p {
   margin-top: 1.1rem;
   color: var(--text-muted);
