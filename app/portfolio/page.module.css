@@ -44,6 +44,7 @@
   display: grid;
   place-items: center;
   flex: 0 0 2.5rem;
+  width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(34, 211, 238, 0.28);
@@ -69,7 +70,9 @@
   margin-bottom: 0.25rem;
 }
 
-.outcomes span {
+/* Class, not `.outcomes span` — an element selector here is more specific than
+   .outcomeIcon and was overriding the icon box's display and colour. */
+.outcomeBody {
   display: block;
   color: var(--text-muted);
   font-size: 0.95rem;

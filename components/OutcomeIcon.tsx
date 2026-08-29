@@ -22,7 +22,7 @@ const paths: Record<OutcomeIconName, React.ReactNode> = {
   ),
   scale: (
     <>
-      <path d="M4 20V9M10 20V4M16 20v-8M22 20V7" />
+      <path d="M3 20V9M9 20V4M15 20v-8M21 20V7" />
     </>
   ),
   field: (
@@ -33,8 +33,8 @@ const paths: Record<OutcomeIconName, React.ReactNode> = {
   ),
   capture: (
     <>
-      <path d="M3.5 8.5h3l1.5-2.5h8L17.5 8.5h3v11h-17z" />
-      <circle cx="12" cy="13.5" r="3.2" />
+      <path d="M3.5 7.75h3l1.5-2.5h8l1.5 2.5h3v11h-17z" />
+      <circle cx="12" cy="12.75" r="3.2" />
     </>
   ),
   journey: (
@@ -75,22 +75,22 @@ const paths: Record<OutcomeIconName, React.ReactNode> = {
   ),
   chat: (
     <>
-      <path d="M20.5 12a7.5 7.5 0 0 1-7.5 7.5H8l-4 3v-4.4A7.5 7.5 0 0 1 8.5 4.5h4.5A7.5 7.5 0 0 1 20.5 12Z" />
-      <path d="M9 10.5h7M9 14h4.5" />
+      <path d="M21.5 12a7.5 7.5 0 0 1-7.5 7.5H9l-4 3v-4.4A7.5 7.5 0 0 1 9.5 4.5h4.5A7.5 7.5 0 0 1 21.5 12Z" />
+      <path d="M10 10.5h7M10 14h4.5" />
     </>
   ),
   agent: (
     <>
-      <rect x="4.5" y="7" width="15" height="12" rx="4" />
-      <path d="M12 7V3.5" />
-      <circle cx="9.5" cy="13" r="1.3" fill="currentColor" stroke="none" />
-      <circle cx="14.5" cy="13" r="1.3" fill="currentColor" stroke="none" />
+      <rect x="4.5" y="7.75" width="15" height="12" rx="4" />
+      <path d="M12 7.75V4.25" />
+      <circle cx="9.5" cy="13.75" r="1.3" fill="currentColor" stroke="none" />
+      <circle cx="14.5" cy="13.75" r="1.3" fill="currentColor" stroke="none" />
     </>
   ),
   assistant: (
     <>
-      <path d="M4.5 5.5h15v11h-9l-4 3.5v-3.5h-2z" />
-      <path d="M9 9.5h6M9 12.5h3.5" />
+      <path d="M4.5 4.75h15v11h-9l-4 3.5v-3.5h-2z" />
+      <path d="M9 8.75h6M9 11.75h3.5" />
     </>
   ),
   embed: (

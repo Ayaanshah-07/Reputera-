@@ -99,7 +99,7 @@ export default function PortfolioPage() {
                   </span>
                   <div>
                     <strong>{outcome.title}</strong>
-                    <span>{outcome.body}</span>
+                    <span className={styles.outcomeBody}>{outcome.body}</span>
                   </div>
                 </li>
               ))}
